@@ -7,7 +7,10 @@ use axerrno::LinuxError;
 use axtask::current;
 use axtask::TaskExtRef;
 use axhal::paging::MappingFlags;
+use axhal::mem::{PAGE_SIZE_4K, VirtAddr, MemoryAddr};
 use arceos_posix_api as api;
+use alloc::vec::Vec;
+use alloc::vec;
 
 const SYS_IOCTL: usize = 29;
 const SYS_OPENAT: usize = 56;
@@ -140,7 +143,52 @@ fn sys_mmap(
     fd: i32,
     _offset: isize,
 ) -> isize {
-    unimplemented!("no sys_mmap!");
+    syscall_body!(sys_mmap, {
+        // Get the user space address space
+        let curr = current();
+        let task_ext = curr.task_ext();
+        let mut aspace = task_ext.aspace.lock();
+        
+        // Parse flags
+        let mmap_flags = MmapFlags::from_bits_truncate(flags);
+        let mmap_prot = MmapProt::from_bits_truncate(prot);
+        
+        // Allocate virtual address if addr is NULL
+        let vaddr = if !addr.is_null() {
+            VirtAddr::from(addr as usize)
+        } else {
+            // Find a suitable virtual address
+            aspace.end() - PAGE_SIZE_4K
+        };
+        
+        // Align address and size to page boundaries
+        let aligned_vaddr = vaddr.align_down_4k();
+        let aligned_length = (length + PAGE_SIZE_4K - 1) & !(PAGE_SIZE_4K - 1);
+        
+        // Map the memory
+        let mapping_flags = MappingFlags::from(mmap_prot) | MappingFlags::USER;
+        aspace.map_alloc(aligned_vaddr, aligned_length, mapping_flags, true)?;
+        
+        // If it's a file mapping, read the file and write to the mapped memory
+        if !mmap_flags.contains(MmapFlags::MAP_ANONYMOUS) && fd >= 0 {
+            // Read from file
+            let mut data = vec![0u8; aligned_length];
+            let mut read_count = 0;
+            while read_count < length {
+                let buf = &mut data[read_count..];
+                let n = api::sys_read(fd, buf.as_mut_ptr() as *mut c_void, buf.len());
+                if n <= 0 {
+                    break;
+                }
+                read_count += n as usize;
+            }
+            
+            // Write to mapped memory
+            aspace.write(aligned_vaddr, &data[..read_count])?;
+        }
+        
+        Ok(aligned_vaddr.as_usize())
+    })
 }
 
 fn sys_openat(dfd: c_int, fname: *const c_char, flags: c_int, mode: api::ctypes::mode_t) -> isize {

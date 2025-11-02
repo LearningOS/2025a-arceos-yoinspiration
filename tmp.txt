@@ -142,10 +142,10 @@ log_level = warn
 
 Create '/tmp/f1' and write [hello] ...
 Rename '/tmp/f1' to '/tmp/f2' ...
-[37m[  0.983497 0 axfs_vfs:160] [33m[AxError::Unsupported][m
-[m[37m[  0.990452 0 axruntime::lang_items:5] [31mpanicked at exercises/ramfs_rename/src/main.rs:51:9:
-Error: Operation not supported[m
-[mramfs_rename fault
+Read '/tmp/f2' content: [hello] ok!
+
+[Ramfs-Rename]: ok!
+ramfs_rename pass
     [92;1mCreating[0m FAT32 disk image "disk.img" ...
 mkfs.fat 4.2 (2021-01-31)
     [92;1mBuilding[0m App: alt_alloc, Arch: riscv64, Platform: riscv64-qemu-virt, App type: rust
@@ -365,11 +365,11 @@ smp = 1
 build_mode = release
 log_level = warn
 
-[37m[  1.089652 0 fatfs::dir:139] [31mIs a directory[m
-[m[37m[  1.128470 0 fatfs::dir:139] [31mIs a directory[m
-[m[37m[  1.169917 0 fatfs::dir:139] [31mIs a directory[m
-[m[37m[  1.208274 0 fatfs::dir:139] [31mIs a directory[m
-[m[37m[  1.241775 0:2 axruntime::lang_items:5] [31mpanicked at exercises/sys_map/src/main.rs:37:21:
+[37m[  1.136635 0 fatfs::dir:139] [31mIs a directory[m
+[m[37m[  1.172909 0 fatfs::dir:139] [31mIs a directory[m
+[m[37m[  1.215344 0 fatfs::dir:139] [31mIs a directory[m
+[m[37m[  1.249163 0 fatfs::dir:139] [31mIs a directory[m
+[m[37m[  1.280655 0:2 axruntime::lang_items:5] [31mpanicked at exercises/sys_map/src/main.rs:37:21:
 Cannot load app! NotFound[m
 [msys_mmap default
     [92;1mCreating[0m FAT32 disk image "disk.img" ...
@@ -446,14 +446,14 @@ smp = 1
 build_mode = release
 log_level = warn
 
-[37m[  1.085263 0 fatfs::dir:139] [31mIs a directory[m
-[m[37m[  1.123893 0 fatfs::dir:139] [31mIs a directory[m
-[m[37m[  1.166330 0 fatfs::dir:139] [31mIs a directory[m
-[m[37m[  1.200540 0 fatfs::dir:139] [31mIs a directory[m
+[37m[  1.144163 0 fatfs::dir:139] [31mIs a directory[m
+[m[37m[  1.185296 0 fatfs::dir:139] [31mIs a directory[m
+[m[37m[  1.227776 0 fatfs::dir:139] [31mIs a directory[m
+[m[37m[  1.263287 0 fatfs::dir:139] [31mIs a directory[m
 [mHypervisor ...
 app: /sbin/skernel2
 paddr: PA:0x80643000
-[37m[  1.253526 0:2 axruntime::lang_items:5] [31mpanicked at exercises/simple_hv/src/main.rs:105:13:
+[37m[  1.305410 0:2 axruntime::lang_items:5] [31mpanicked at exercises/simple_hv/src/main.rs:105:13:
 Bad instruction: 0xf14025f3 sepc: 0x80200000[m
 [msimple_hv default
-300
+400
