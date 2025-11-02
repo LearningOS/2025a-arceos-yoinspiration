@@ -12,7 +12,7 @@
 [package]
 edition = "2021"
 name = "axfs_ramfs"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Yuekai Jia <equation618@gmail.com>"]
 build = false
 autobins = false

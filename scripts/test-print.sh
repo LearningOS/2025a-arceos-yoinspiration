@@ -2,8 +2,7 @@
 
 cd arceos/ || exit
 
-rm pflash.img -f 
-rm disk.img -f
+rm -f pflash.img disk.img
 
 make pflash_img
 make disk_img
@@ -36,7 +35,7 @@ else
 fi
 
 
-rm a.txt b.txt c.txt -f
+rm -f a.txt b.txt c.txt
 
 if [[ "$has_color" == true && "$has_text" == true ]]; then
     echo "print_with_color pass"

@@ -7,8 +7,7 @@ grep_content="\[Ramfs-Rename\]: ok!"
 cd arceos/ || exit
 
 
-rm pflash.img -f 
-rm disk.img -f
+rm -f pflash.img disk.img
 
 make pflash_img
 make disk_img

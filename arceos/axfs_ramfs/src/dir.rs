@@ -118,7 +118,7 @@ impl VfsNodeOps for DirNode {
     }
 
     fn create(&self, path: &str, ty: VfsNodeType) -> VfsResult {
-        log::debug!("create {:?} at ramfs: {}", ty, path);
+        log::info!("create {:?} at ramfs: {}", ty, path);
         let (name, rest) = split_path(path);
         if let Some(rest) = rest {
             match name {
@@ -142,7 +142,7 @@ impl VfsNodeOps for DirNode {
     }
 
     fn remove(&self, path: &str) -> VfsResult {
-        log::debug!("remove at ramfs: {}", path);
+        log::info!("remove at ramfs: {}", path);
         let (name, rest) = split_path(path);
         if let Some(rest) = rest {
             match name {
@@ -163,6 +163,26 @@ impl VfsNodeOps for DirNode {
         } else {
             self.remove_node(name)
         }
+    }
+
+    fn rename(&self, src_path: &str, dst_path: &str) -> VfsResult {
+        log::info!("rename at ramfs: {} -> {}", src_path, dst_path);
+        let (src_name, src_rest) = split_path(src_path);
+        let (dst_name, dst_rest) = split_path(dst_path);
+        
+        // Only support rename within the same directory
+        if src_rest.is_some() || dst_rest.is_some() {
+            return Err(VfsError::Unsupported);
+        }
+        
+        let mut children = self.children.write();
+        let node = children.get(src_name).ok_or(VfsError::NotFound)?.clone();
+        
+        // Remove from old name and insert with new name
+        children.remove(src_name);
+        children.insert(dst_name.into(), node);
+        
+        Ok(())
     }
 
     axfs_vfs::impl_vfs_dir_default! {}

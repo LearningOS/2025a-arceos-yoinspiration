@@ -19,9 +19,13 @@ fi
 
 printf "Write file '$FILE' into disk.img\n"
 
-mkdir -p ./mnt
-sudo mount ./disk.img ./mnt
-sudo mkdir -p ./mnt/sbin
-sudo cp $FILE ./mnt/sbin
-sudo umount ./mnt
-rm -rf mnt
+if [ "$(uname)" = "Darwin" ] && command -v mcopy >/dev/null 2>&1; then
+    mcopy -i disk.img "$FILE" ::/sbin/
+else
+    mkdir -p ./mnt
+    sudo mount ./disk.img ./mnt
+    sudo mkdir -p ./mnt/sbin
+    sudo cp $FILE ./mnt/sbin
+    sudo umount ./mnt
+    rm -rf mnt
+fi

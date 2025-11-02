@@ -6,8 +6,7 @@ grep_content="Shutdown vm normally!"
 cd arceos/ || exit
 
 
-rm pflash.img
-rm disk.img
+rm -f pflash.img disk.img
 
 make pflash_img
 make disk_img

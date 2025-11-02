@@ -5,8 +5,7 @@ grep_content="Read back content: hello, arceos!"
 
 cd arceos/ || exit
 
-rm pflash.img -f
-rm disk.img -f
+rm -f pflash.img disk.img
 
 make pflash_img
 make disk_img
