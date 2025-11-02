@@ -1,0 +1,1368 @@
+Run qemu-system-riscv64 --version
+QEMU emulator version 8.2.2 (Debian 1:8.2.2+ds-0ubuntu1.10)
+Copyright (c) 2003-2023 Fabrice Bellard and the QEMU Project developers
+cargo 1.83.0-nightly (c1fa840a8 2024-08-29)
+    Updating git repository `https://github.com/arceos-org/allocator.git`
+    Updating crates.io index
+    Updating git repository `https://github.com/arceos-org/axdriver_crates.git`
+    Updating git repository `https://github.com/arceos-org/scheduler.git`
+    Updating git repository `https://github.com/rafalh/rust-fatfs`
+    Updating git repository `https://github.com/rcore-os/smoltcp.git`
+    Updating git repository `https://github.com/rcore-os/riscv`
+    Updating git repository `https://github.com/KuangjuX/riscv-decode.git`
+    Updating git repository `https://github.com/arceos-org/slab_allocator.git`
+    Updating git repository `https://github.com/lhw2002426/bcm2835-sdhci.git`
+    Updating git repository `https://github.com/KuangjuX/ixgbe-driver.git`
+    Updating git repository `https://github.com/arceos-org/linked_list.git`
+     Locking 194 packages to latest compatible versions
+      Adding aarch64-cpu v9.4.0 (latest: v11.1.0)
+      Adding bare-metal v0.2.5 (latest: v1.0.0)
+      Adding base64 v0.13.1 (latest: v0.22.1)
+      Adding bindgen v0.69.5 (latest: v0.72.1)
+      Adding bitflags v1.3.2 (latest: v2.10.0)
+      Adding bitmap-allocator v0.1.0 (latest: v0.2.1)
+      Adding buddy_system_allocator v0.10.0 (latest: v0.11.0)
+      Adding defmt v0.3.100 (latest: v1.0.1)
+      Adding flatten_objects v0.1.0 (latest: v0.2.4)
+      Adding getrandom v0.2.16 (latest: v0.3.4)
+      Adding hash32 v0.2.1 (latest: v1.0.0)
+      Adding heapless v0.7.17 (latest: v0.9.1)
+      Adding home v0.5.11 (latest compatible: v0.5.12)
+      Adding itertools v0.12.1 (latest: v0.14.0)
+      Adding kernel-elf-parser v0.1.0 (latest: v0.3.3)
+      Adding linux-raw-sys v0.4.15 (latest: v0.12.0)
+      Adding memory_addr v0.3.2 (latest: v0.4.0)
+      Adding memory_set v0.3.2 (latest: v0.4.0)
+      Adding nom v7.1.3 (latest: v8.0.0)
+      Adding page_table_entry v0.4.1 (latest compatible: v0.4.3)
+      Adding page_table_multiarch v0.4.1 (latest compatible: v0.4.3)
+      Adding percpu v0.1.7 (latest: v0.2.0)
+      Adding percpu_macros v0.1.7 (latest: v0.2.0)
+      Adding rand v0.8.5 (latest: v0.9.2)
+      Adding rand_chacha v0.3.1 (latest: v0.9.0)
+      Adding rand_core v0.6.4 (latest: v0.9.3)
+      Adding raw-cpuid v10.7.0 (latest: v11.6.0)
+      Adding riscv v0.11.1 (latest: v0.15.0)
+      Adding rustc-hash v1.1.0 (latest: v2.1.1)
+      Adding rustc_version v0.2.3 (latest: v0.4.1)
+      Adding rustix v0.38.44 (latest: v1.1.2)
+      Adding sbi-rt v0.0.2 (latest: v0.0.3)
+      Adding sbi-spec v0.0.4 (latest: v0.0.8)
+      Adding sbi-spec v0.0.6 (latest: v0.0.8)
+      Adding sbi-spec v0.0.7 (latest: v0.0.8)
+      Adding semver v0.9.0 (latest: v1.0.27)
+      Adding semver-parser v0.7.0 (latest: v0.10.3)
+      Adding spin v0.9.8 (latest: v0.10.0)
+      Adding syn v1.0.109 (latest: v2.0.108)
+      Adding tock-registers v0.8.1 (latest: v0.10.1)
+      Adding toml_datetime v0.6.11 (latest: v0.7.3)
+      Adding toml_edit v0.22.27 (latest: v0.23.7)
+      Adding unicode-width v0.1.14 (latest: v0.2.2)
+      Adding virtio-drivers v0.7.5 (latest: v0.12.0)
+      Adding volatile v0.2.7 (latest: v0.6.1)
+      Adding volatile v0.3.0 (latest: v0.6.1)
+      Adding volatile v0.4.6 (latest: v0.6.1)
+      Adding wasi v0.11.1+wasi-snapshot-preview1 (latest: v0.14.7+wasi-0.2.4)
+      Adding which v4.4.2 (latest: v8.0.0)
+      Adding windows-sys v0.59.0 (latest: v0.61.2)
+      Adding windows-targets v0.52.6 (latest: v0.53.5)
+      Adding windows_aarch64_gnullvm v0.52.6 (latest: v0.53.1)
+      Adding windows_aarch64_msvc v0.52.6 (latest: v0.53.1)
+      Adding windows_i686_gnu v0.52.6 (latest: v0.53.1)
+      Adding windows_i686_gnullvm v0.52.6 (latest: v0.53.1)
+      Adding windows_i686_msvc v0.52.6 (latest: v0.53.1)
+      Adding windows_x86_64_gnu v0.52.6 (latest: v0.53.1)
+      Adding windows_x86_64_gnullvm v0.52.6 (latest: v0.53.1)
+      Adding windows_x86_64_msvc v0.52.6 (latest: v0.53.1)
+      Adding x2apic v0.4.3 (latest: v0.5.0)
+      Adding x86_64 v0.14.13 (latest: v0.15.2)
+      Adding xmas-elf v0.9.1 (latest: v0.10.0)
+      Adding zerocopy v0.7.35 (latest: v0.8.27)
+      Adding zerocopy-derive v0.7.35 (latest: v0.8.27)
+   Compiling origin v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/origin)
+    Finished `release` profile [optimized] target(s) in 7.96s
+32+0 records in
+32+0 records out
+33554432 bytes (34 MB, 32 MiB) copied, 0.0212585 s, 1.6 GB/s
+0+1 records in
+0+1 records out
+12 bytes copied, 2.5227e-05 s, 476 kB/s
+0+1 records in
+14+0 records out
+14 bytes copied, 3.6538e-05 s, 383 kB/s
+    Creating FAT32 disk image "disk.img" ...
+64+0 records in
+64+0 records out
+67108864 bytes (67 MB, 64 MiB) copied, 0.0491026 s, 1.4 GB/s
+mkfs.fat 4.2 (2021-01-31)
+    Finished `release` profile [optimized] target(s) in 0.05s
+    Building App: print_with_color, Arch: riscv64, Platform: riscv64-qemu-virt, App type: rust
+cargo -C exercises/print_with_color/ build -Z unstable-options --target riscv64gc-unknown-none-elf --target-dir /home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/target --release  --features "axstd/log-level-warn"
+ Downloading crates ...
+  Downloaded autocfg v1.5.0
+  Downloaded volatile v0.4.6
+  Downloaded num-traits v0.2.19
+  Downloaded toml_edit v0.22.27
+  Downloaded toml_write v0.1.2
+  Downloaded percpu_macros v0.1.7
+  Downloaded lazyinit v0.2.2
+  Downloaded paste v1.0.15
+  Downloaded x2apic v0.4.3
+  Downloaded unicode-ident v1.0.22
+  Downloaded toml_datetime v0.6.11
+  Downloaded serde_core v1.0.228
+  Downloaded proc-macro2 v1.0.103
+  Downloaded x86_64 v0.14.13
+  Downloaded x86_64 v0.15.2
+  Downloaded raw-cpuid v10.7.0
+  Downloaded winnow v0.7.13
+  Downloaded raw-cpuid v11.6.0
+  Downloaded memchr v2.7.6
+  Downloaded syn v2.0.108
+  Downloaded int_ratio v0.1.2
+  Downloaded log v0.4.28
+  Downloaded scopeguard v1.2.0
+  Downloaded lock_api v0.4.14
+  Downloaded bitflags v2.10.0
+  Downloaded spin v0.9.8
+  Downloaded page_table_entry v0.4.1
+  Downloaded embedded-hal v1.0.0
+  Downloaded cfg-if v1.0.4
+  Downloaded sbi-spec v0.0.7
+  Downloaded sbi-rt v0.0.3
+  Downloaded rustversion v1.0.22
+  Downloaded memory_addr v0.3.2
+  Downloaded axerrno v0.1.0
+  Downloaded linkme-impl v0.3.35
+  Downloaded critical-section v1.2.0
+  Downloaded crate_interface v0.1.4
+  Downloaded handler_table v0.1.2
+  Downloaded bitflags v1.3.2
+  Downloaded bit v0.1.1
+  Downloaded axio v0.1.1
+  Downloaded serde v1.0.228
+  Downloaded riscv v0.11.1
+  Downloaded indexmap v2.12.0
+  Downloaded equivalent v1.0.2
+  Downloaded chrono v0.4.42
+  Downloaded kspin v0.1.1
+  Downloaded bit_field v0.10.3
+  Downloaded static_assertions v1.1.0
+  Downloaded quote v1.0.41
+  Downloaded percpu v0.1.7
+  Downloaded linkme v0.3.35
+  Downloaded hashbrown v0.16.0
+  Downloaded x86 v0.52.0
+   Compiling proc-macro2 v1.0.103
+   Compiling unicode-ident v1.0.22
+   Compiling quote v1.0.41
+   Compiling serde_core v1.0.228
+   Compiling equivalent v1.0.2
+   Compiling serde v1.0.228
+   Compiling hashbrown v0.16.0
+   Compiling toml_write v0.1.2
+   Compiling toml_datetime v0.6.11
+   Compiling winnow v0.7.13
+   Compiling syn v2.0.108
+   Compiling indexmap v2.12.0
+   Compiling cfg-if v1.0.4
+   Compiling log v0.4.28
+   Compiling linkme-impl v0.3.35
+   Compiling riscv v0.11.1
+   Compiling linkme v0.3.35
+   Compiling percpu v0.1.7
+   Compiling critical-section v1.2.0
+   Compiling bitflags v2.10.0
+   Compiling toml_edit v0.22.27
+   Compiling embedded-hal v1.0.0
+   Compiling memory_addr v0.3.2
+   Compiling autocfg v1.5.0
+   Compiling sbi-spec v0.0.7
+   Compiling sbi-rt v0.0.3
+   Compiling num-traits v0.2.19
+   Compiling page_table_entry v0.4.1
+   Compiling static_assertions v1.1.0
+   Compiling handler_table v0.1.2
+   Compiling lazyinit v0.2.2
+   Compiling int_ratio v0.1.2
+   Compiling axerrno v0.1.0
+   Compiling axio v0.1.1
+   Compiling chrono v0.4.42
+   Compiling crate_interface v0.1.4
+   Compiling kernel_guard v0.1.2 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/crates/kernel_guard)
+   Compiling kspin v0.1.1
+   Compiling percpu_macros v0.1.7
+   Compiling axconfig v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axconfig)
+   Compiling axhal v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axhal)
+   Compiling axlog v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axlog)
+warning: the feature `asm_const` has been stable since 1.83.0-nightly and no longer requires an attribute to enable
+  --> modules/axhal/src/lib.rs:28:12
+   |
+28 | #![feature(asm_const)]
+   |            ^^^^^^^^^
+   |
+   = note: `#[warn(stable_features)]` on by default
+
+   Compiling axruntime v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axruntime)
+   Compiling axtask v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axtask)
+   Compiling axsync v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axsync)
+   Compiling axfeat v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/api/axfeat)
+   Compiling arceos_api v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/api/arceos_api)
+warning: `axhal` (lib) generated 1 warning
+   Compiling axstd v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/ulib/axstd)
+   Compiling print_with_colord v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/exercises/print_with_color)
+    Finished `release` profile [optimized] target(s) in 6.46s
+rust-objcopy --binary-architecture=riscv64 exercises/print_with_color//print_with_color_riscv64-qemu-virt.elf --strip-all -O binary exercises/print_with_color//print_with_color_riscv64-qemu-virt.bin
+    Running on qemu...
+qemu-system-riscv64 -m 128M -smp 1 -machine virt -bios default -kernel exercises/print_with_color//print_with_color_riscv64-qemu-virt.bin -drive if=pflash,file=/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/pflash.img,format=raw,unit=1 -nographic -D qemu.log -d in_asm,int,mmu,pcall,cpu_reset,guest_errors
+
+OpenSBI v1.3
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|___/_____|
+        | |
+        |_|
+
+Platform Name             : riscv-virtio,qemu
+Platform Features         : medeleg
+Platform HART Count       : 1
+Platform IPI Device       : aclint-mswi
+Platform Timer Device     : aclint-mtimer @ 10000000Hz
+Platform Console Device   : uart8250
+Platform HSM Device       : ---
+Platform PMU Device       : ---
+Platform Reboot Device    : sifive_test
+Platform Shutdown Device  : sifive_test
+Platform Suspend Device   : ---
+Platform CPPC Device      : ---
+Firmware Base             : 0x80000000
+Firmware Size             : 322 KB
+Firmware RW Offset        : 0x40000
+Firmware RW Size          : 66 KB
+Firmware Heap Offset      : 0x48000
+Firmware Heap Size        : 34 KB (total), 2 KB (reserved), 9 KB (used), 22 KB (free)
+Firmware Scratch Size     : 4096 B (total), 760 B (used), 3336 B (free)
+Runtime SBI Version       : 1.0
+
+Domain0 Name              : root
+Domain0 Boot HART         : 0
+Domain0 HARTs             : 0*
+Domain0 Region00          : 0x0000000002000000-0x000000000200ffff M: (I,R,W) S/U: ()
+Domain0 Region01          : 0x0000000080040000-0x000000008005ffff M: (R,W) S/U: ()
+Domain0 Region02          : 0x0000000080000000-0x000000008003ffff M: (R,X) S/U: ()
+Domain0 Region03          : 0x0000000000000000-0xffffffffffffffff M: (R,W,X) S/U: (R,W,X)
+Domain0 Next Address      : 0x0000000080200000
+Domain0 Next Arg1         : 0x0000000087e00000
+Domain0 Next Mode         : S-mode
+Domain0 SysReset          : yes
+Domain0 SysSuspend        : yes
+
+Boot HART ID              : 0
+Boot HART Domain          : root
+Boot HART Priv Version    : v1.12
+Boot HART Base ISA        : rv64imafdch
+Boot HART ISA Extensions  : time,sstc
+Boot HART PMP Count       : 16
+Boot HART PMP Granularity : 4
+Boot HART PMP Address Bits: 54
+Boot HART MHPM Count      : 16
+Boot HART MIDELEG         : 0x0000000000001666
+Boot HART MEDELEG         : 0x0000000000f0b509
+
+       d8888                            .d88888b.   .d8888b.
+      d88888                           d88P" "Y88b d88P  Y88b
+     d88P888                           888     888 Y88b.
+    d88P 888 888d888  .d8888b  .d88b.  888     888  "Y888b.
+   d88P  888 888P"   d88P"    d8P  Y8b 888     888     "Y88b.
+  d88P   888 888     888      88888888 888     888       "888
+ d8888888888 888     Y88b.    Y8b.     Y88b. .d88P Y88b  d88P
+d88P     888 888      "Y8888P  "Y8888   "Y88888P"   "Y8888P"
+
+arch = riscv64
+platform = riscv64-qemu-virt
+target = riscv64gc-unknown-none-elf
+smp = 1
+build_mode = release
+log_level = warn
+
+[WithColor]: Hello, Arceos!
+Has color
+Has Hello, Arceos!
+print_with_color pass
+    Finished `release` profile [optimized] target(s) in 0.05s
+32+0 records in
+32+0 records out
+33554432 bytes (34 MB, 32 MiB) copied, 0.0214382 s, 1.6 GB/s
+0+1 records in
+0+1 records out
+12 bytes copied, 2.6871e-05 s, 447 kB/s
+0+1 records in
+14+0 records out
+14 bytes copied, 3.6548e-05 s, 383 kB/s
+    Creating FAT32 disk image "disk.img" ...
+64+0 records in
+64+0 records out
+67108864 bytes (67 MB, 64 MiB) copied, 0.0423277 s, 1.6 GB/s
+mkfs.fat 4.2 (2021-01-31)
+    Finished `release` profile [optimized] target(s) in 0.05s
+    Building App: ramfs_rename, Arch: riscv64, Platform: riscv64-qemu-virt, App type: rust
+cargo -C exercises/ramfs_rename/ build -Z unstable-options --target riscv64gc-unknown-none-elf --target-dir /home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/target --release  --features "axstd/log-level-warn"
+ Downloading crates ...
+  Downloaded byteorder v1.5.0
+  Downloaded axfs_vfs v0.1.2
+  Downloaded cap_access v0.1.0
+  Downloaded bitmap-allocator v0.1.0
+  Downloaded svgbobdoc v0.3.0
+  Downloaded base64 v0.13.1
+  Downloaded zerocopy-derive v0.7.35
+  Downloaded virtio-drivers v0.7.5
+  Downloaded zerocopy v0.7.35
+  Downloaded page_table_multiarch v0.4.1
+  Downloaded rlsf v0.2.1
+  Downloaded memory_set v0.3.2
+  Downloaded syn v1.0.109
+  Downloaded enumn v0.1.14
+  Downloaded const-default v1.0.0
+  Downloaded axfs_devfs v0.1.2
+  Downloaded unicode-width v0.1.14
+  Downloaded libc v0.2.177
+   Compiling syn v1.0.109
+   Compiling base64 v0.13.1
+   Compiling unicode-width v0.1.14
+   Compiling const-default v1.0.0
+   Compiling bit_field v0.10.3
+   Compiling bitmap-allocator v0.1.0
+   Compiling axhal v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axhal)
+   Compiling page_table_multiarch v0.4.1
+   Compiling zerocopy-derive v0.7.35
+   Compiling byteorder v1.5.0
+   Compiling enumn v0.1.14
+   Compiling scopeguard v1.2.0
+   Compiling lock_api v0.4.14
+   Compiling axdriver_base v0.1.0 (https://github.com/arceos-org/axdriver_crates.git?tag=v0.1.0#78686a7e)
+   Compiling axdriver_block v0.1.0 (https://github.com/arceos-org/axdriver_crates.git?tag=v0.1.0#78686a7e)
+   Compiling axfs_vfs v0.1.2
+   Compiling spin v0.9.8
+   Compiling axdriver v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axdriver)
+   Compiling axfs_ramfs v0.1.2 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/axfs_ramfs)
+   Compiling zerocopy v0.7.35
+   Compiling axfs_devfs v0.1.2
+   Compiling memory_set v0.3.2
+   Compiling axio v0.1.1
+   Compiling fatfs v0.4.0 (https://github.com/rafalh/rust-fatfs?rev=85f06e0#85f06e08)
+   Compiling cap_access v0.1.0
+   Compiling virtio-drivers v0.7.5
+   Compiling svgbobdoc v0.3.0
+   Compiling rlsf v0.2.1
+   Compiling allocator v0.1.0 (https://github.com/arceos-org/allocator.git?tag=v0.1.0#16496d88)
+   Compiling axalloc v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axalloc)
+warning: the feature `asm_const` has been stable since 1.83.0-nightly and no longer requires an attribute to enable
+  --> modules/axhal/src/lib.rs:28:12
+   |
+28 | #![feature(asm_const)]
+   |            ^^^^^^^^^
+   |
+   = note: `#[warn(stable_features)]` on by default
+
+   Compiling axtask v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axtask)
+   Compiling axsync v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axsync)
+   Compiling axmm v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axmm)
+warning: `axhal` (lib) generated 1 warning
+   Compiling axdriver_virtio v0.1.0 (https://github.com/arceos-org/axdriver_crates.git?tag=v0.1.0#78686a7e)
+   Compiling axdriver_pci v0.1.0 (https://github.com/arceos-org/axdriver_crates.git?tag=v0.1.0#78686a7e)
+   Compiling axfs v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axfs)
+   Compiling axruntime v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axruntime)
+   Compiling axfeat v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/api/axfeat)
+   Compiling arceos_api v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/api/arceos_api)
+   Compiling axstd v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/ulib/axstd)
+   Compiling ramfs_rename v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/exercises/ramfs_rename)
+    Finished `release` profile [optimized] target(s) in 5.04s
+rust-objcopy --binary-architecture=riscv64 exercises/ramfs_rename//ramfs_rename_riscv64-qemu-virt.elf --strip-all -O binary exercises/ramfs_rename//ramfs_rename_riscv64-qemu-virt.bin
+    Running on qemu...
+qemu-system-riscv64 -m 128M -smp 1 -machine virt -bios default -kernel exercises/ramfs_rename//ramfs_rename_riscv64-qemu-virt.bin -drive if=pflash,file=/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/pflash.img,format=raw,unit=1 -device virtio-blk-pci,drive=disk0 -drive id=disk0,if=none,format=raw,file=disk.img -nographic -D qemu.log -d in_asm,int,mmu,pcall,cpu_reset,guest_errors
+
+OpenSBI v1.3
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|___/_____|
+        | |
+        |_|
+
+Platform Name             : riscv-virtio,qemu
+Platform Features         : medeleg
+Platform HART Count       : 1
+Platform IPI Device       : aclint-mswi
+Platform Timer Device     : aclint-mtimer @ 10000000Hz
+Platform Console Device   : uart8250
+Platform HSM Device       : ---
+Platform PMU Device       : ---
+Platform Reboot Device    : sifive_test
+Platform Shutdown Device  : sifive_test
+Platform Suspend Device   : ---
+Platform CPPC Device      : ---
+Firmware Base             : 0x80000000
+Firmware Size             : 322 KB
+Firmware RW Offset        : 0x40000
+Firmware RW Size          : 66 KB
+Firmware Heap Offset      : 0x48000
+Firmware Heap Size        : 34 KB (total), 2 KB (reserved), 9 KB (used), 22 KB (free)
+Firmware Scratch Size     : 4096 B (total), 760 B (used), 3336 B (free)
+Runtime SBI Version       : 1.0
+
+Domain0 Name              : root
+Domain0 Boot HART         : 0
+Domain0 HARTs             : 0*
+Domain0 Region00          : 0x0000000002000000-0x000000000200ffff M: (I,R,W) S/U: ()
+Domain0 Region01          : 0x0000000080040000-0x000000008005ffff M: (R,W) S/U: ()
+Domain0 Region02          : 0x0000000080000000-0x000000008003ffff M: (R,X) S/U: ()
+Domain0 Region03          : 0x0000000000000000-0xffffffffffffffff M: (R,W,X) S/U: (R,W,X)
+Domain0 Next Address      : 0x0000000080200000
+Domain0 Next Arg1         : 0x0000000087e00000
+Domain0 Next Mode         : S-mode
+Domain0 SysReset          : yes
+Domain0 SysSuspend        : yes
+
+Boot HART ID              : 0
+Boot HART Domain          : root
+Boot HART Priv Version    : v1.12
+Boot HART Base ISA        : rv64imafdch
+Boot HART ISA Extensions  : time,sstc
+Boot HART PMP Count       : 16
+Boot HART PMP Granularity : 4
+Boot HART PMP Address Bits: 54
+Boot HART MHPM Count      : 16
+Boot HART MIDELEG         : 0x0000000000001666
+Boot HART MEDELEG         : 0x0000000000f0b509
+
+       d8888                            .d88888b.   .d8888b.
+      d88888                           d88P" "Y88b d88P  Y88b
+     d88P888                           888     888 Y88b.
+    d88P 888 888d888  .d8888b  .d88b.  888     888  "Y888b.
+   d88P  888 888P"   d88P"    d8P  Y8b 888     888     "Y88b.
+  d88P   888 888     888      88888888 888     888       "888
+ d8888888888 888     Y88b.    Y8b.     Y88b. .d88P Y88b  d88P
+d88P     888 888      "Y8888P  "Y8888   "Y88888P"   "Y8888P"
+
+arch = riscv64
+platform = riscv64-qemu-virt
+target = riscv64gc-unknown-none-elf
+smp = 1
+build_mode = release
+log_level = warn
+
+Create '/tmp/f1' and write [hello] ...
+Rename '/tmp/f1' to '/tmp/f2' ...
+Read '/tmp/f2' content: [hello] ok!
+
+[Ramfs-Rename]: ok!
+ramfs_rename pass
+    Finished `release` profile [optimized] target(s) in 0.05s
+32+0 records in
+32+0 records out
+33554432 bytes (34 MB, 32 MiB) copied, 0.0215893 s, 1.6 GB/s
+0+1 records in
+0+1 records out
+12 bytes copied, 2.6991e-05 s, 445 kB/s
+0+1 records in
+14+0 records out
+14 bytes copied, 3.8622e-05 s, 362 kB/s
+    Creating FAT32 disk image "disk.img" ...
+64+0 records in
+64+0 records out
+67108864 bytes (67 MB, 64 MiB) copied, 0.0420151 s, 1.6 GB/s
+mkfs.fat 4.2 (2021-01-31)
+    Finished `release` profile [optimized] target(s) in 0.05s
+    Building App: alt_alloc, Arch: riscv64, Platform: riscv64-qemu-virt, App type: rust
+cargo -C exercises/alt_alloc/ build -Z unstable-options --target riscv64gc-unknown-none-elf --target-dir /home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/target --release  --features "axstd/log-level-warn"
+warning: the feature `asm_const` has been stable since 1.83.0-nightly and no longer requires an attribute to enable
+  --> modules/axhal/src/lib.rs:28:12
+   |
+28 | #![feature(asm_const)]
+   |            ^^^^^^^^^
+   |
+   = note: `#[warn(stable_features)]` on by default
+
+   Compiling allocator v0.1.0 (https://github.com/arceos-org/allocator.git?tag=v0.1.0#16496d88)
+warning: `axhal` (lib) generated 1 warning
+   Compiling bump_allocator v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/bump_allocator)
+   Compiling alt_axalloc v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/alt_axalloc)
+   Compiling axruntime v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axruntime)
+   Compiling axfeat v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/api/axfeat)
+   Compiling arceos_api v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/api/arceos_api)
+   Compiling axstd v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/ulib/axstd)
+   Compiling alt_alloc v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/exercises/alt_alloc)
+    Finished `release` profile [optimized] target(s) in 0.63s
+rust-objcopy --binary-architecture=riscv64 exercises/alt_alloc//alt_alloc_riscv64-qemu-virt.elf --strip-all -O binary exercises/alt_alloc//alt_alloc_riscv64-qemu-virt.bin
+    Running on qemu...
+qemu-system-riscv64 -m 128M -smp 1 -machine virt -bios default -kernel exercises/alt_alloc//alt_alloc_riscv64-qemu-virt.bin -drive if=pflash,file=/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/pflash.img,format=raw,unit=1 -nographic -D qemu.log -d in_asm,int,mmu,pcall,cpu_reset,guest_errors
+
+OpenSBI v1.3
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|___/_____|
+        | |
+        |_|
+
+Platform Name             : riscv-virtio,qemu
+Platform Features         : medeleg
+Platform HART Count       : 1
+Platform IPI Device       : aclint-mswi
+Platform Timer Device     : aclint-mtimer @ 10000000Hz
+Platform Console Device   : uart8250
+Platform HSM Device       : ---
+Platform PMU Device       : ---
+Platform Reboot Device    : sifive_test
+Platform Shutdown Device  : sifive_test
+Platform Suspend Device   : ---
+Platform CPPC Device      : ---
+Firmware Base             : 0x80000000
+Firmware Size             : 322 KB
+Firmware RW Offset        : 0x40000
+Firmware RW Size          : 66 KB
+Firmware Heap Offset      : 0x48000
+Firmware Heap Size        : 34 KB (total), 2 KB (reserved), 9 KB (used), 22 KB (free)
+Firmware Scratch Size     : 4096 B (total), 760 B (used), 3336 B (free)
+Runtime SBI Version       : 1.0
+
+Domain0 Name              : root
+Domain0 Boot HART         : 0
+Domain0 HARTs             : 0*
+Domain0 Region00          : 0x0000000002000000-0x000000000200ffff M: (I,R,W) S/U: ()
+Domain0 Region01          : 0x0000000080040000-0x000000008005ffff M: (R,W) S/U: ()
+Domain0 Region02          : 0x0000000080000000-0x000000008003ffff M: (R,X) S/U: ()
+Domain0 Region03          : 0x0000000000000000-0xffffffffffffffff M: (R,W,X) S/U: (R,W,X)
+Domain0 Next Address      : 0x0000000080200000
+Domain0 Next Arg1         : 0x0000000087e00000
+Domain0 Next Mode         : S-mode
+Domain0 SysReset          : yes
+Domain0 SysSuspend        : yes
+
+Boot HART ID              : 0
+Boot HART Domain          : root
+Boot HART Priv Version    : v1.12
+Boot HART Base ISA        : rv64imafdch
+Boot HART ISA Extensions  : time,sstc
+Boot HART PMP Count       : 16
+Boot HART PMP Granularity : 4
+Boot HART PMP Address Bits: 54
+Boot HART MHPM Count      : 16
+Boot HART MIDELEG         : 0x0000000000001666
+Boot HART MEDELEG         : 0x0000000000f0b509
+
+       d8888                            .d88888b.   .d8888b.
+      d88888                           d88P" "Y88b d88P  Y88b
+     d88P888                           888     888 Y88b.
+    d88P 888 888d888  .d8888b  .d88b.  888     888  "Y888b.
+   d88P  888 888P"   d88P"    d8P  Y8b 888     888     "Y88b.
+  d88P   888 888     888      88888888 888     888       "888
+ d8888888888 888     Y88b.    Y8b.     Y88b. .d88P Y88b  d88P
+d88P     888 888      "Y8888P  "Y8888   "Y88888P"   "Y8888P"
+
+arch = riscv64
+platform = riscv64-qemu-virt
+target = riscv64gc-unknown-none-elf
+smp = 1
+build_mode = release
+log_level = warn
+
+Running bump tests...
+Bump tests run OK!
+alt_alloc pass
+    Finished `release` profile [optimized] target(s) in 0.05s
+32+0 records in
+32+0 records out
+33554432 bytes (34 MB, 32 MiB) copied, 0.0209388 s, 1.6 GB/s
+0+1 records in
+0+1 records out
+12 bytes copied, 2.5818e-05 s, 465 kB/s
+0+1 records in
+14+0 records out
+14 bytes copied, 3.8722e-05 s, 362 kB/s
+    Creating FAT32 disk image "disk.img" ...
+64+0 records in
+64+0 records out
+67108864 bytes (67 MB, 64 MiB) copied, 0.0422497 s, 1.6 GB/s
+mkfs.fat 4.2 (2021-01-31)
+    Finished `release` profile [optimized] target(s) in 0.05s
+    Building App: support_hashmap, Arch: riscv64, Platform: riscv64-qemu-virt, App type: rust
+cargo -C exercises/support_hashmap/ build -Z unstable-options --target riscv64gc-unknown-none-elf --target-dir /home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/target --release  --features "axstd/log-level-warn"
+warning: the feature `asm_const` has been stable since 1.83.0-nightly and no longer requires an attribute to enable
+  --> modules/axhal/src/lib.rs:28:12
+   |
+28 | #![feature(asm_const)]
+   |            ^^^^^^^^^
+   |
+   = note: `#[warn(stable_features)]` on by default
+
+warning: `axhal` (lib) generated 1 warning
+   Compiling axruntime v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axruntime)
+   Compiling axfeat v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/api/axfeat)
+   Compiling arceos_api v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/api/arceos_api)
+   Compiling axstd v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/ulib/axstd)
+   Compiling support_hashmap v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/exercises/support_hashmap)
+    Finished `release` profile [optimized] target(s) in 0.65s
+rust-objcopy --binary-architecture=riscv64 exercises/support_hashmap//support_hashmap_riscv64-qemu-virt.elf --strip-all -O binary exercises/support_hashmap//support_hashmap_riscv64-qemu-virt.bin
+    Running on qemu...
+qemu-system-riscv64 -m 128M -smp 1 -machine virt -bios default -kernel exercises/support_hashmap//support_hashmap_riscv64-qemu-virt.bin -drive if=pflash,file=/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/pflash.img,format=raw,unit=1 -nographic -D qemu.log -d in_asm,int,mmu,pcall,cpu_reset,guest_errors
+
+OpenSBI v1.3
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|___/_____|
+        | |
+        |_|
+
+Platform Name             : riscv-virtio,qemu
+Platform Features         : medeleg
+Platform HART Count       : 1
+Platform IPI Device       : aclint-mswi
+Platform Timer Device     : aclint-mtimer @ 10000000Hz
+Platform Console Device   : uart8250
+Platform HSM Device       : ---
+Platform PMU Device       : ---
+Platform Reboot Device    : sifive_test
+Platform Shutdown Device  : sifive_test
+Platform Suspend Device   : ---
+Platform CPPC Device      : ---
+Firmware Base             : 0x80000000
+Firmware Size             : 322 KB
+Firmware RW Offset        : 0x40000
+Firmware RW Size          : 66 KB
+Firmware Heap Offset      : 0x48000
+Firmware Heap Size        : 34 KB (total), 2 KB (reserved), 9 KB (used), 22 KB (free)
+Firmware Scratch Size     : 4096 B (total), 760 B (used), 3336 B (free)
+Runtime SBI Version       : 1.0
+
+Domain0 Name              : root
+Domain0 Boot HART         : 0
+Domain0 HARTs             : 0*
+Domain0 Region00          : 0x0000000002000000-0x000000000200ffff M: (I,R,W) S/U: ()
+Domain0 Region01          : 0x0000000080040000-0x000000008005ffff M: (R,W) S/U: ()
+Domain0 Region02          : 0x0000000080000000-0x000000008003ffff M: (R,X) S/U: ()
+Domain0 Region03          : 0x0000000000000000-0xffffffffffffffff M: (R,W,X) S/U: (R,W,X)
+Domain0 Next Address      : 0x0000000080200000
+Domain0 Next Arg1         : 0x0000000087e00000
+Domain0 Next Mode         : S-mode
+Domain0 SysReset          : yes
+Domain0 SysSuspend        : yes
+
+Boot HART ID              : 0
+Boot HART Domain          : root
+Boot HART Priv Version    : v1.12
+Boot HART Base ISA        : rv64imafdch
+Boot HART ISA Extensions  : time,sstc
+Boot HART PMP Count       : 16
+Boot HART PMP Granularity : 4
+Boot HART PMP Address Bits: 54
+Boot HART MHPM Count      : 16
+Boot HART MIDELEG         : 0x0000000000001666
+Boot HART MEDELEG         : 0x0000000000f0b509
+
+       d8888                            .d88888b.   .d8888b.
+      d88888                           d88P" "Y88b d88P  Y88b
+     d88P888                           888     888 Y88b.
+    d88P 888 888d888  .d8888b  .d88b.  888     888  "Y888b.
+   d88P  888 888P"   d88P"    d8P  Y8b 888     888     "Y88b.
+  d88P   888 888     888      88888888 888     888       "888
+ d8888888888 888     Y88b.    Y8b.     Y88b. .d88P Y88b  d88P
+d88P     888 888      "Y8888P  "Y8888   "Y88888P"   "Y8888P"
+
+arch = riscv64
+platform = riscv64-qemu-virt
+target = riscv64gc-unknown-none-elf
+smp = 1
+build_mode = release
+log_level = warn
+
+Running memory tests...
+test_hashmap() OK!
+Memory tests run OK!
+support_hashmap pass
+    Finished `release` profile [optimized] target(s) in 0.05s
+32+0 records in
+32+0 records out
+33554432 bytes (34 MB, 32 MiB) copied, 0.0217246 s, 1.5 GB/s
+0+1 records in
+0+1 records out
+12 bytes copied, 2.8043e-05 s, 428 kB/s
+0+1 records in
+14+0 records out
+14 bytes copied, 3.8573e-05 s, 363 kB/s
+    Creating FAT32 disk image "disk.img" ...
+64+0 records in
+64+0 records out
+67108864 bytes (67 MB, 64 MiB) copied, 0.0428177 s, 1.6 GB/s
+mkfs.fat 4.2 (2021-01-31)
+    Finished `release` profile [optimized] target(s) in 0.05s
+make[1]: Entering directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload'
+make -C origin
+make[2]: Entering directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/origin'
+make[2]: Leaving directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/origin'
+make -C hello_c
+make[2]: Entering directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/hello_c'
+riscv64-linux-musl-gcc -static hello.c -o hello
+riscv64-linux-musl-strip hello
+make[2]: Leaving directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/hello_c'
+make -C fileops_c
+make[2]: Entering directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/fileops_c'
+riscv64-linux-musl-gcc -static fileops.c -o fileops
+riscv64-linux-musl-strip fileops
+make[2]: Leaving directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/fileops_c'
+make -C mapfile_c
+make[2]: Entering directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/mapfile_c'
+riscv64-linux-musl-gcc -static mapfile.c -o mapfile
+riscv64-linux-musl-strip mapfile
+make[2]: Leaving directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/mapfile_c'
+make -C skernel
+make[2]: Entering directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/skernel'
+   Compiling skernel v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/skernel)
+    Finished `release` profile [optimized] target(s) in 0.13s
+make[2]: Leaving directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/skernel'
+make -C skernel2
+make[2]: Entering directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/skernel2'
+     Removed 0 files
+   Compiling skernel2 v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/skernel2)
+    Finished `release` profile [optimized] target(s) in 0.12s
+make[2]: Leaving directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/skernel2'
+make[1]: Leaving directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload'
+Write file 'payload/mapfile_c/mapfile' into disk.img
+    Building App: sys_map, Arch: riscv64, Platform: riscv64-qemu-virt, App type: rust
+cargo -C exercises/sys_map/ build -Z unstable-options --target riscv64gc-unknown-none-elf --target-dir /home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/target --release  --features "axstd/log-level-warn"
+ Downloading crates ...
+  Downloaded clang-sys v1.8.1
+  Downloaded lazycell v1.3.0
+  Downloaded shlex v1.3.0
+  Downloaded which v4.4.2
+  Downloaded rustc-hash v1.1.0
+  Downloaded timer_list v0.1.0
+  Downloaded xmas-elf v0.9.1
+  Downloaded libloading v0.8.9
+  Downloaded itertools v0.12.1
+  Downloaded home v0.5.11
+  Downloaded bindgen v0.69.5
+  Downloaded errno v0.3.14
+  Downloaded regex v1.12.2
+  Downloaded prettyplease v0.2.37
+  Downloaded nom v7.1.3
+  Downloaded glob v0.3.3
+  Downloaded flatten_objects v0.1.0
+  Downloaded either v1.15.0
+  Downloaded cexpr v0.6.0
+  Downloaded bitmaps v3.2.1
+  Downloaded aho-corasick v1.1.4
+  Downloaded rustix v0.38.44
+  Downloaded zero v0.1.3
+  Downloaded kernel-elf-parser v0.1.0
+  Downloaded regex-syntax v0.8.8
+  Downloaded minimal-lexical v0.2.1
+  Downloaded lazy_static v1.5.0
+  Downloaded regex-automata v0.4.13
+  Downloaded linux-raw-sys v0.4.15
+   Compiling syn v2.0.108
+   Compiling percpu v0.1.7
+   Compiling axhal v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axhal)
+   Compiling linked_list v0.1.0 (https://github.com/arceos-org/linked_list.git?tag=v0.1.0#34c8db30)
+   Compiling scheduler v0.1.0 (https://github.com/arceos-org/scheduler.git?tag=v0.1.0#c8d25d9a)
+   Compiling glob v0.3.3
+   Compiling timer_list v0.1.0
+   Compiling rustix v0.38.44
+   Compiling prettyplease v0.2.37
+   Compiling libc v0.2.177
+   Compiling clang-sys v1.8.1
+   Compiling linux-raw-sys v0.4.15
+   Compiling regex-syntax v0.8.8
+   Compiling bitflags v2.10.0
+   Compiling cfg-if v1.0.4
+   Compiling memchr v2.7.6
+   Compiling either v1.15.0
+   Compiling minimal-lexical v0.2.1
+   Compiling nom v7.1.3
+   Compiling regex-automata v0.4.13
+   Compiling libloading v0.8.9
+   Compiling bindgen v0.69.5
+   Compiling home v0.5.11
+   Compiling which v4.4.2
+   Compiling regex v1.12.2
+   Compiling cexpr v0.6.0
+   Compiling itertools v0.12.1
+   Compiling crate_interface v0.1.4
+   Compiling kernel_guard v0.1.2 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/crates/kernel_guard)
+   Compiling linkme-impl v0.3.35
+   Compiling kspin v0.1.1
+   Compiling percpu_macros v0.1.7
+   Compiling axlog v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axlog)
+   Compiling axalloc v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axalloc)
+   Compiling linkme v0.3.35
+   Compiling zerocopy-derive v0.7.35
+warning: the feature `asm_const` has been stable since 1.83.0-nightly and no longer requires an attribute to enable
+  --> modules/axhal/src/lib.rs:28:12
+   |
+28 | #![feature(asm_const)]
+   |            ^^^^^^^^^
+   |
+   = note: `#[warn(stable_features)]` on by default
+
+   Compiling enumn v0.1.14
+warning: `axhal` (lib) generated 1 warning
+   Compiling axtask v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axtask)
+   Compiling axmm v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axmm)
+   Compiling zerocopy v0.7.35
+   Compiling axsync v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axsync)
+   Compiling log v0.4.28
+   Compiling rustc-hash v1.1.0
+   Compiling lazy_static v1.5.0
+   Compiling shlex v1.3.0
+   Compiling lazycell v1.3.0
+   Compiling zero v0.1.3
+   Compiling bitmaps v3.2.1
+   Compiling virtio-drivers v0.7.5
+   Compiling flatten_objects v0.1.0
+   Compiling xmas-elf v0.9.1
+   Compiling elf v0.7.4 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/elf)
+warning: unexpected `cfg` condition value: `std`
+   --> modules/elf/src/lib.rs:128:17
+    |
+128 | #![cfg_attr(not(feature = "std"), no_std)]
+    |                 ^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `std` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+    = note: `#[warn(unexpected_cfgs)]` on by default
+
+warning: unexpected `cfg` condition value: `std`
+   --> modules/elf/src/lib.rs:129:42
+    |
+129 | #![cfg_attr(all(feature = "nightly", not(feature = "std")), feature(error_in_core))]
+    |                                          ^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `std` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `to_str`
+   --> modules/elf/src/lib.rs:148:7
+    |
+148 | #[cfg(feature = "to_str")]
+    |       ^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `to_str` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+   --> modules/elf/src/lib.rs:158:7
+    |
+158 | #[cfg(feature = "std")]
+    |       ^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `std` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+   --> modules/elf/src/lib.rs:160:7
+    |
+160 | #[cfg(feature = "std")]
+    |       ^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `std` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+  --> modules/elf/src/parse.rs:62:7
+   |
+62 | #[cfg(feature = "std")]
+   |       ^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `nightly`
+   = help: consider adding `std` as a feature in `Cargo.toml`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+  --> modules/elf/src/parse.rs:86:36
+   |
+86 | #[cfg(all(feature = "nightly", not(feature = "std")))]
+   |                                    ^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `nightly`
+   = help: consider adding `std` as a feature in `Cargo.toml`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+   --> modules/elf/src/parse.rs:193:7
+    |
+193 | #[cfg(feature = "std")]
+    |       ^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `std` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+  --> modules/elf/src/parse.rs:56:11
+   |
+56 |     #[cfg(feature = "std")]
+   |           ^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `nightly`
+   = help: consider adding `std` as a feature in `Cargo.toml`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+   --> modules/elf/src/parse.rs:169:19
+    |
+169 |             #[cfg(feature = "std")]
+    |                   ^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `std` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+   Compiling kernel-elf-parser v0.1.0
+warning: `elf` (lib) generated 10 warnings
+   Compiling axdriver_pci v0.1.0 (https://github.com/arceos-org/axdriver_crates.git?tag=v0.1.0#78686a7e)
+   Compiling axdriver_virtio v0.1.0 (https://github.com/arceos-org/axdriver_crates.git?tag=v0.1.0#78686a7e)
+   Compiling axdriver v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axdriver)
+   Compiling axfs v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axfs)
+   Compiling axruntime v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axruntime)
+   Compiling axfeat v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/api/axfeat)
+   Compiling arceos_api v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/api/arceos_api)
+   Compiling axstd v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/ulib/axstd)
+   Compiling arceos_posix_api v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/api/arceos_posix_api)
+   Compiling sys_map v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/exercises/sys_map)
+warning: unused import: `alloc::vec::Vec`
+  --> exercises/sys_map/src/syscall.rs:12:5
+   |
+12 | use alloc::vec::Vec;
+   |     ^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+
+warning: `sys_map` (bin "sys_map") generated 1 warning (run `cargo fix --bin "sys_map"` to apply 1 suggestion)
+    Finished `release` profile [optimized] target(s) in 19.61s
+rust-objcopy --binary-architecture=riscv64 exercises/sys_map//sys_map_riscv64-qemu-virt.elf --strip-all -O binary exercises/sys_map//sys_map_riscv64-qemu-virt.bin
+    Running on qemu...
+qemu-system-riscv64 -m 128M -smp 1 -machine virt -bios default -kernel exercises/sys_map//sys_map_riscv64-qemu-virt.bin -drive if=pflash,file=/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/pflash.img,format=raw,unit=1 -device virtio-blk-pci,drive=disk0 -drive id=disk0,if=none,format=raw,file=disk.img -nographic -D qemu.log -d in_asm,int,mmu,pcall,cpu_reset,guest_errors
+
+OpenSBI v1.3
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|___/_____|
+        | |
+        |_|
+
+Platform Name             : riscv-virtio,qemu
+Platform Features         : medeleg
+Platform HART Count       : 1
+Platform IPI Device       : aclint-mswi
+Platform Timer Device     : aclint-mtimer @ 10000000Hz
+Platform Console Device   : uart8250
+Platform HSM Device       : ---
+Platform PMU Device       : ---
+Platform Reboot Device    : sifive_test
+Platform Shutdown Device  : sifive_test
+Platform Suspend Device   : ---
+Platform CPPC Device      : ---
+Firmware Base             : 0x80000000
+Firmware Size             : 322 KB
+Firmware RW Offset        : 0x40000
+Firmware RW Size          : 66 KB
+Firmware Heap Offset      : 0x48000
+Firmware Heap Size        : 34 KB (total), 2 KB (reserved), 9 KB (used), 22 KB (free)
+Firmware Scratch Size     : 4096 B (total), 760 B (used), 3336 B (free)
+Runtime SBI Version       : 1.0
+
+Domain0 Name              : root
+Domain0 Boot HART         : 0
+Domain0 HARTs             : 0*
+Domain0 Region00          : 0x0000000002000000-0x000000000200ffff M: (I,R,W) S/U: ()
+Domain0 Region01          : 0x0000000080040000-0x000000008005ffff M: (R,W) S/U: ()
+Domain0 Region02          : 0x0000000080000000-0x000000008003ffff M: (R,X) S/U: ()
+Domain0 Region03          : 0x0000000000000000-0xffffffffffffffff M: (R,W,X) S/U: (R,W,X)
+Domain0 Next Address      : 0x0000000080200000
+Domain0 Next Arg1         : 0x0000000087e00000
+Domain0 Next Mode         : S-mode
+Domain0 SysReset          : yes
+Domain0 SysSuspend        : yes
+
+Boot HART ID              : 0
+Boot HART Domain          : root
+Boot HART Priv Version    : v1.12
+Boot HART Base ISA        : rv64imafdch
+Boot HART ISA Extensions  : time,sstc
+Boot HART PMP Count       : 16
+Boot HART PMP Granularity : 4
+Boot HART PMP Address Bits: 54
+Boot HART MHPM Count      : 16
+Boot HART MIDELEG         : 0x0000000000001666
+Boot HART MEDELEG         : 0x0000000000f0b509
+
+       d8888                            .d88888b.   .d8888b.
+      d88888                           d88P" "Y88b d88P  Y88b
+     d88P888                           888     888 Y88b.
+    d88P 888 888d888  .d8888b  .d88b.  888     888  "Y888b.
+   d88P  888 888P"   d88P"    d8P  Y8b 888     888     "Y88b.
+  d88P   888 888     888      88888888 888     888       "888
+ d8888888888 888     Y88b.    Y8b.     Y88b. .d88P Y88b  d88P
+d88P     888 888      "Y8888P  "Y8888   "Y88888P"   "Y8888P"
+
+arch = riscv64
+platform = riscv64-qemu-virt
+target = riscv64gc-unknown-none-elf
+smp = 1
+build_mode = release
+log_level = warn
+
+[  0.502950 0 fatfs::dir:139] Is a directory
+[  0.538034 0 fatfs::dir:139] Is a directory
+[  0.578021 0 fatfs::dir:139] Is a directory
+[  0.622912 0 fatfs::dir:139] Is a directory
+phdr: offset: 0x0=>0x0 size: 0x5FAC=>0x5FAC
+VA:0x0 - VA:0x6000
+phdr: offset: 0x6E70=>0x7E70 size: 0x340=>0x9B0
+VA:0x7000 - VA:0x9000
+entry: 0x526
+Mapping user stack: VA:0x3fffff0000 -> VA:0x4000000000
+New user address space: AddrSpace {
+    va_range: VA:0x0..VA:0x4000000000,
+    page_table_root: PA:0x8064d000,
+}
+handle_syscall [96] ...
+handle_syscall [29] ...
+Ignore SYS_IOCTL
+handle_syscall [66] ...
+MapFile ...
+handle_syscall [56] ...
+handle_syscall [64] ...
+handle_syscall [57] ...
+handle_syscall [56] ...
+handle_syscall [222] ...
+handle_syscall [66] ...
+Read back content: hello, arceos!
+handle_syscall [57] ...
+handle_syscall [66] ...
+MapFile ok!
+handle_syscall [94] ...
+[SYS_EXIT_GROUP]: system is exiting ..
+monolithic kernel exit [Some(0)] normally!
+sys_mmap pass
+    Finished `release` profile [optimized] target(s) in 0.05s
+32+0 records in
+32+0 records out
+33554432 bytes (34 MB, 32 MiB) copied, 0.0219961 s, 1.5 GB/s
+0+1 records in
+0+1 records out
+12 bytes copied, 2.8433e-05 s, 422 kB/s
+0+1 records in
+14+0 records out
+14 bytes copied, 3.9013e-05 s, 359 kB/s
+    Creating FAT32 disk image "disk.img" ...
+64+0 records in
+64+0 records out
+67108864 bytes (67 MB, 64 MiB) copied, 0.0412704 s, 1.6 GB/s
+mkfs.fat 4.2 (2021-01-31)
+    Finished `release` profile [optimized] target(s) in 0.05s
+make[1]: Entering directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload'
+make -C origin
+make[2]: Entering directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/origin'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/origin'
+make -C hello_c
+make[2]: Entering directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/hello_c'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/hello_c'
+make -C fileops_c
+make[2]: Entering directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/fileops_c'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/fileops_c'
+make -C mapfile_c
+make[2]: Entering directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/mapfile_c'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/mapfile_c'
+make -C skernel
+make[2]: Entering directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/skernel'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/skernel'
+make -C skernel2
+make[2]: Entering directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/skernel2'
+     Removed 8 files, 21.0KiB total
+   Compiling skernel2 v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/skernel2)
+    Finished `release` profile [optimized] target(s) in 0.13s
+make[2]: Leaving directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload/skernel2'
+make[1]: Leaving directory '/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/payload'
+Write file 'payload/skernel2/skernel2' into disk.img
+    Building App: simple_hv, Arch: riscv64, Platform: riscv64-qemu-virt, App type: rust
+cargo -C exercises/simple_hv/ build -Z unstable-options --target riscv64gc-unknown-none-elf --target-dir /home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/target --release  --features "axstd/log-level-warn"
+ Downloading crates ...
+  Downloaded sbi-rt v0.0.2
+  Downloaded semver v0.9.0
+  Downloaded tock-registers v0.8.1
+  Downloaded rustc_version v0.2.3
+  Downloaded bare-metal v0.2.5
+  Downloaded semver-parser v0.7.0
+  Downloaded sbi-spec v0.0.6
+  Downloaded sbi-spec v0.0.4
+  Downloaded riscv-target v0.1.2
+  Downloaded memoffset v0.9.1
+   Compiling kernel_guard v0.1.2 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/crates/kernel_guard)
+   Compiling axhal v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axhal)
+   Compiling percpu_macros v0.1.7
+   Compiling aho-corasick v1.1.4
+   Compiling kspin v0.1.1
+   Compiling axalloc v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axalloc)
+   Compiling axlog v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axlog)
+   Compiling regex-syntax v0.8.8
+   Compiling semver-parser v0.7.0
+   Compiling percpu v0.1.7
+warning: the feature `asm_const` has been stable since 1.83.0-nightly and no longer requires an attribute to enable
+  --> modules/axhal/src/lib.rs:28:12
+   |
+28 | #![feature(asm_const)]
+   |            ^^^^^^^^^
+   |
+   = note: `#[warn(stable_features)]` on by default
+
+   Compiling semver v0.9.0
+   Compiling axtask v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axtask)
+warning: `axhal` (lib) generated 1 warning
+   Compiling axdriver v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axdriver)
+   Compiling axsync v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axsync)
+   Compiling axfs v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axfs)
+   Compiling axmm v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axmm)
+   Compiling rustc_version v0.2.3
+   Compiling axruntime v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/modules/axruntime)
+   Compiling regex-automata v0.4.13
+   Compiling bare-metal v0.2.5
+   Compiling axfeat v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/api/axfeat)
+   Compiling memoffset v0.9.1
+   Compiling arceos_api v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/api/arceos_api)
+   Compiling sbi-spec v0.0.4
+   Compiling bitflags v1.3.2
+   Compiling sbi-rt v0.0.2
+   Compiling axstd v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/ulib/axstd)
+   Compiling sbi-spec v0.0.6
+   Compiling tock-registers v0.8.1
+warning: unexpected `cfg` condition value: `std`
+   --> modules/elf/src/lib.rs:128:17
+    |
+128 | #![cfg_attr(not(feature = "std"), no_std)]
+    |                 ^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `std` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+    = note: `#[warn(unexpected_cfgs)]` on by default
+
+warning: unexpected `cfg` condition value: `std`
+   --> modules/elf/src/lib.rs:129:42
+    |
+129 | #![cfg_attr(all(feature = "nightly", not(feature = "std")), feature(error_in_core))]
+    |                                          ^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `std` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `to_str`
+   --> modules/elf/src/lib.rs:148:7
+    |
+148 | #[cfg(feature = "to_str")]
+    |       ^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `to_str` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+   --> modules/elf/src/lib.rs:158:7
+    |
+158 | #[cfg(feature = "std")]
+    |       ^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `std` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+   --> modules/elf/src/lib.rs:160:7
+    |
+160 | #[cfg(feature = "std")]
+    |       ^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `std` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+  --> modules/elf/src/parse.rs:62:7
+   |
+62 | #[cfg(feature = "std")]
+   |       ^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `nightly`
+   = help: consider adding `std` as a feature in `Cargo.toml`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+  --> modules/elf/src/parse.rs:86:36
+   |
+86 | #[cfg(all(feature = "nightly", not(feature = "std")))]
+   |                                    ^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `nightly`
+   = help: consider adding `std` as a feature in `Cargo.toml`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+   --> modules/elf/src/parse.rs:193:7
+    |
+193 | #[cfg(feature = "std")]
+    |       ^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `std` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+  --> modules/elf/src/parse.rs:56:11
+   |
+56 |     #[cfg(feature = "std")]
+   |           ^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `nightly`
+   = help: consider adding `std` as a feature in `Cargo.toml`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+   --> modules/elf/src/parse.rs:169:19
+    |
+169 |             #[cfg(feature = "std")]
+    |                   ^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `std` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: `elf` (lib) generated 10 warnings
+   Compiling regex v1.12.2
+   Compiling riscv-target v0.1.2
+   Compiling riscv v0.6.0 (https://github.com/rcore-os/riscv#11d43cf7)
+   Compiling simple_hv v0.1.0 (/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/exercises/simple_hv)
+warning: the feature `asm_const` has been stable since 1.83.0-nightly and no longer requires an attribute to enable
+ --> exercises/simple_hv/src/main.rs:3:12
+  |
+3 | #![feature(asm_const)]
+  |            ^^^^^^^^^
+  |
+  = note: `#[warn(stable_features)]` on by default
+
+warning: `simple_hv` (bin "simple_hv") generated 1 warning
+    Finished `release` profile [optimized] target(s) in 6.89s
+rust-objcopy --binary-architecture=riscv64 exercises/simple_hv//simple_hv_riscv64-qemu-virt.elf --strip-all -O binary exercises/simple_hv//simple_hv_riscv64-qemu-virt.bin
+    Running on qemu...
+qemu-system-riscv64 -m 128M -smp 1 -machine virt -bios default -kernel exercises/simple_hv//simple_hv_riscv64-qemu-virt.bin -drive if=pflash,file=/home/runner/work/2025a-arceos-yoinspiration/2025a-arceos-yoinspiration/arceos/pflash.img,format=raw,unit=1 -device virtio-blk-pci,drive=disk0 -drive id=disk0,if=none,format=raw,file=disk.img -nographic -D qemu.log -d in_asm,int,mmu,pcall,cpu_reset,guest_errors
+
+OpenSBI v1.3
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|___/_____|
+        | |
+        |_|
+
+Platform Name             : riscv-virtio,qemu
+Platform Features         : medeleg
+Platform HART Count       : 1
+Platform IPI Device       : aclint-mswi
+Platform Timer Device     : aclint-mtimer @ 10000000Hz
+Platform Console Device   : uart8250
+Platform HSM Device       : ---
+Platform PMU Device       : ---
+Platform Reboot Device    : sifive_test
+Platform Shutdown Device  : sifive_test
+Platform Suspend Device   : ---
+Platform CPPC Device      : ---
+Firmware Base             : 0x80000000
+Firmware Size             : 322 KB
+Firmware RW Offset        : 0x40000
+Firmware RW Size          : 66 KB
+Firmware Heap Offset      : 0x48000
+Firmware Heap Size        : 34 KB (total), 2 KB (reserved), 9 KB (used), 22 KB (free)
+Firmware Scratch Size     : 4096 B (total), 760 B (used), 3336 B (free)
+Runtime SBI Version       : 1.0
+
+Domain0 Name              : root
+Domain0 Boot HART         : 0
+Domain0 HARTs             : 0*
+Domain0 Region00          : 0x0000000002000000-0x000000000200ffff M: (I,R,W) S/U: ()
+Domain0 Region01          : 0x0000000080040000-0x000000008005ffff M: (R,W) S/U: ()
+Domain0 Region02          : 0x0000000080000000-0x000000008003ffff M: (R,X) S/U: ()
+Domain0 Region03          : 0x0000000000000000-0xffffffffffffffff M: (R,W,X) S/U: (R,W,X)
+Domain0 Next Address      : 0x0000000080200000
+Domain0 Next Arg1         : 0x0000000087e00000
+Domain0 Next Mode         : S-mode
+Domain0 SysReset          : yes
+Domain0 SysSuspend        : yes
+
+Boot HART ID              : 0
+Boot HART Domain          : root
+Boot HART Priv Version    : v1.12
+Boot HART Base ISA        : rv64imafdch
+Boot HART ISA Extensions  : time,sstc
+Boot HART PMP Count       : 16
+Boot HART PMP Granularity : 4
+Boot HART PMP Address Bits: 54
+Boot HART MHPM Count      : 16
+Boot HART MIDELEG         : 0x0000000000001666
+Boot HART MEDELEG         : 0x0000000000f0b509
+
+       d8888                            .d88888b.   .d8888b.
+      d88888                           d88P" "Y88b d88P  Y88b
+     d88P888                           888     888 Y88b.
+    d88P 888 888d888  .d8888b  .d88b.  888     888  "Y888b.
+   d88P  888 888P"   d88P"    d8P  Y8b 888     888     "Y88b.
+  d88P   888 888     888      88888888 888     888       "888
+ d8888888888 888     Y88b.    Y8b.     Y88b. .d88P Y88b  d88P
+d88P     888 888      "Y8888P  "Y8888   "Y88888P"   "Y8888P"
+
+arch = riscv64
+platform = riscv64-qemu-virt
+target = riscv64gc-unknown-none-elf
+smp = 1
+build_mode = release
+log_level = warn
+
+[  0.492517 0 fatfs::dir:139] Is a directory
+[  0.530717 0 fatfs::dir:139] Is a directory
+[  0.579454 0 fatfs::dir:139] Is a directory
+[  0.624708 0 fatfs::dir:139] Is a directory
+Hypervisor ...
+app: /sbin/skernel2, binary format
+app: /sbin/skernel2, size: 4096 bytes
+paddr: PA:PA:0x80646000
+[  0.659629 0:2 axruntime::lang_items:5] panicked at exercises/simple_hv/src/main.rs:104:13:
+Bad instruction: 0xf14025f3 sepc: 0x80200000
+simple_hv default
+500
+test-simple_hv failed
+0s
+0s

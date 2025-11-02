@@ -17,7 +17,7 @@ mod sbi;
 mod loader;
 
 use vcpu::VmCpuRegisters;
-use riscv::register::{scause, sstatus, stval};
+use riscv::register::{scause, sstatus, stval, mhartid};
 use csrs::defs::hstatus;
 use tock_registers::LocalRegisterCopy;
 use csrs::{RiscvCsrTrait, CSR};
@@ -101,8 +101,24 @@ fn vmexit_handler(ctx: &mut VmCpuRegisters) -> bool {
             }
         },
         Trap::Exception(Exception::IllegalInstruction) => {
+            let inst = stval::read();
+            ax_println!("Illegal instruction: {:#x} at sepc: {:#x}", inst, ctx.guest_regs.sepc);
+            
+            // Check if it's csrr a1, mhartid (0xf14025f3)
+            // csrr rd, csr encoding: | csr[11:0] | rd[4:0] | opcode |
+            // 0xf14025f3 = csrr a1(11), mhartid(0xf14)
+            if inst == 0xf14025f3 {
+                // Simulate: set a1 = mhartid (typically 0)
+                let hartid = mhartid::read();
+                ctx.guest_regs.gprs.set_reg(A1, hartid);
+                ax_println!("Emulated csrr a1, mhartid: a1 = {:#x}", hartid);
+                // Skip the instruction
+                ctx.guest_regs.sepc += 4;
+                return false;
+            }
+            
             panic!("Bad instruction: {:#x} sepc: {:#x}",
-                stval::read(),
+                inst,
                 ctx.guest_regs.sepc
             );
         },
