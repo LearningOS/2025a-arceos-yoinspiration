@@ -16,3 +16,4 @@ sbi-rt = { version = "0.0.2", features = ["integer-impls", "legacy"] }
 tock-registers = "0.8.1"
 memoffset = { version = ">=0.6.5", features = ["unstable_const"] }
 axlog = { workspace = true }
+elf = { workspace = true }

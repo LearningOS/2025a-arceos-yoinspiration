@@ -27,8 +27,6 @@ use loader::load_vm_image;
 use axhal::mem::PhysAddr;
 use crate::regs::GprIndex::{A0, A1};
 
-const VM_ENTRY: usize = 0x8020_0000;
-
 #[cfg_attr(feature = "axstd", no_mangle)]
 fn main() {
     ax_println!("Hypervisor ...");
@@ -37,13 +35,14 @@ fn main() {
     let mut uspace = axmm::new_user_aspace().unwrap();
 
     // Load vm binary file into address space.
-    if let Err(e) = load_vm_image("/sbin/skernel2", &mut uspace) {
-        panic!("Cannot load app! {:?}", e);
-    }
+    let entry = match load_vm_image("/sbin/skernel2", &mut uspace) {
+        Ok(e) => e,
+        Err(e) => panic!("Cannot load app! {:?}", e),
+    };
 
     // Setup context to prepare to enter guest mode.
     let mut ctx = VmCpuRegisters::default();
-    prepare_guest_context(&mut ctx);
+    prepare_guest_context(&mut ctx, entry);
 
     // Setup pagetable for 2nd address mapping.
     let ept_root = uspace.page_table_root();
@@ -125,7 +124,7 @@ fn vmexit_handler(ctx: &mut VmCpuRegisters) -> bool {
     false
 }
 
-fn prepare_guest_context(ctx: &mut VmCpuRegisters) {
+fn prepare_guest_context(ctx: &mut VmCpuRegisters, entry: usize) {
     // Set hstatus
     let mut hstatus = LocalRegisterCopy::<usize, hstatus::Register>::new(
         riscv::register::hstatus::read().bits(),
@@ -142,5 +141,5 @@ fn prepare_guest_context(ctx: &mut VmCpuRegisters) {
     sstatus.set_spp(sstatus::SPP::Supervisor);
     ctx.guest_regs.sstatus = sstatus.bits();
     // Return to entry to start vm.
-    ctx.guest_regs.sepc = VM_ENTRY;
+    ctx.guest_regs.sepc = entry;
 }
