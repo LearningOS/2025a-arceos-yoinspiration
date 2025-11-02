@@ -1,15 +1,24 @@
 use std::io::{self, Read};
 use std::fs::File;
+use alloc::vec::Vec;
 use axhal::paging::MappingFlags;
 use axhal::mem::{PAGE_SIZE_4K, phys_to_virt};
 use axmm::AddrSpace;
 use crate::VM_ENTRY;
 
 pub fn load_vm_image(fname: &str, uspace: &mut AddrSpace) -> io::Result<()> {
-    let mut buf = [0u8; 64];
-    load_file(fname, &mut buf)?;
+    // Read entire file
+    let mut file = File::open(fname)?;
+    let mut data = Vec::new();
+    file.read_to_end(&mut data)?;
+    
+    let file_size = data.len();
+    ax_println!("app: {}, size: {} bytes", fname, file_size);
 
-    uspace.map_alloc(VM_ENTRY.into(), PAGE_SIZE_4K, MappingFlags::READ|MappingFlags::WRITE|MappingFlags::EXECUTE|MappingFlags::USER, true).unwrap();
+    // Align size to page boundary
+    let aligned_size = (file_size + PAGE_SIZE_4K - 1) & !(PAGE_SIZE_4K - 1);
+    
+    uspace.map_alloc(VM_ENTRY.into(), aligned_size, MappingFlags::READ|MappingFlags::WRITE|MappingFlags::EXECUTE|MappingFlags::USER, true).unwrap();
 
     let (paddr, _, _) = uspace
         .page_table()
@@ -18,20 +27,23 @@ pub fn load_vm_image(fname: &str, uspace: &mut AddrSpace) -> io::Result<()> {
 
     ax_println!("paddr: {:#x}", paddr);
 
+    // Zero out the page first
+    unsafe {
+        core::ptr::write_bytes(
+            phys_to_virt(paddr).as_mut_ptr(),
+            0,
+            aligned_size,
+        );
+    }
+    
+    // Copy file data
     unsafe {
         core::ptr::copy_nonoverlapping(
-            buf.as_ptr(),
+            data.as_ptr(),
             phys_to_virt(paddr).as_mut_ptr(),
-            PAGE_SIZE_4K,
+            file_size,
         );
     }
 
     Ok(())
-}
-
-fn load_file(fname: &str, buf: &mut [u8]) -> io::Result<usize> {
-    ax_println!("app: {}", fname);
-    let mut file = File::open(fname)?;
-    let n = file.read(buf)?;
-    Ok(n)
 }
