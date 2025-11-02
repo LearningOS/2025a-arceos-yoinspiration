@@ -153,17 +153,16 @@ fn sys_mmap(
         let mmap_flags = MmapFlags::from_bits_truncate(flags);
         let mmap_prot = MmapProt::from_bits_truncate(prot);
         
-        // Allocate virtual address if addr is NULL
-        let vaddr = if !addr.is_null() {
-            VirtAddr::from(addr as usize)
-        } else {
-            // Find a suitable virtual address
-            aspace.end() - PAGE_SIZE_4K
-        };
-        
-        // Align address and size to page boundaries
-        let aligned_vaddr = vaddr.align_down_4k();
+        // Align address and size to page boundaries first
         let aligned_length = (length + PAGE_SIZE_4K - 1) & !(PAGE_SIZE_4K - 1);
+        
+        // Allocate virtual address if addr is NULL
+        let aligned_vaddr = if !addr.is_null() {
+            VirtAddr::from(addr as usize).align_down_4k()
+        } else {
+            // Find a suitable virtual address below stack
+            aspace.end() - aligned_length
+        };
         
         // Map the memory
         let mapping_flags = MappingFlags::from(mmap_prot) | MappingFlags::USER;
