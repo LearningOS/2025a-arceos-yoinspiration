@@ -5,7 +5,7 @@ use std::fs::File;
 use alloc::vec::Vec;
 use alloc::vec;
 use axhal::paging::MappingFlags;
-use axhal::mem::{PAGE_SIZE_4K, VirtAddr, MemoryAddr};
+use axhal::mem::{PAGE_SIZE_4K, VirtAddr, MemoryAddr, phys_to_virt};
 use axmm::AddrSpace;
 
 use elf::abi::{PT_INTERP, PT_LOAD};
@@ -16,10 +16,30 @@ use elf::segment::SegmentTable;
 use elf::ElfBytes;
 
 const ELF_HEAD_BUF_SIZE: usize = 256;
+const BINARY_LOAD_ADDR: usize = 0x8020_0000;
+const ELF_MAGIC: [u8; 4] = [0x7f, 0x45, 0x4c, 0x46]; // "\x7fELF"
 
 pub fn load_vm_image(fname: &str, uspace: &mut AddrSpace) -> io::Result<usize> {
     let mut file = File::open(fname)?;
-    let (phdrs, entry, _, _) = load_elf_phdrs(&mut file)?;
+    
+    // Check if it's an ELF file by reading the magic number
+    let mut magic_buf = [0u8; 4];
+    file.read_exact(&mut magic_buf)?;
+    file.seek(SeekFrom::Start(0))?; // Reset to beginning
+    
+    if magic_buf == ELF_MAGIC {
+        // Load as ELF file
+        ax_println!("app: {}, ELF format", fname);
+        load_elf_file(&mut file, uspace)
+    } else {
+        // Load as raw binary file
+        ax_println!("app: {}, binary format", fname);
+        load_binary_file(&mut file, uspace, fname)
+    }
+}
+
+fn load_elf_file(file: &mut File, uspace: &mut AddrSpace) -> io::Result<usize> {
+    let (phdrs, entry, _, _) = load_elf_phdrs(file)?;
 
     for phdr in &phdrs {
         ax_println!(
@@ -48,6 +68,47 @@ pub fn load_vm_image(fname: &str, uspace: &mut AddrSpace) -> io::Result<usize> {
     }
 
     Ok(entry)
+}
+
+fn load_binary_file(file: &mut File, uspace: &mut AddrSpace, fname: &str) -> io::Result<usize> {
+    // Read entire file
+    let mut data = Vec::new();
+    file.read_to_end(&mut data)?;
+    
+    let file_size = data.len();
+    ax_println!("app: {}, size: {} bytes", fname, file_size);
+
+    // Align size to page boundary
+    let aligned_size = (file_size + PAGE_SIZE_4K - 1) & !(PAGE_SIZE_4K - 1);
+    
+    uspace.map_alloc(BINARY_LOAD_ADDR.into(), aligned_size, MappingFlags::READ|MappingFlags::WRITE|MappingFlags::EXECUTE|MappingFlags::USER, true)?;
+
+    let (paddr, _, _) = uspace
+        .page_table()
+        .query(BINARY_LOAD_ADDR.into())
+        .unwrap_or_else(|_| panic!("Mapping failed for segment: {:#x}", BINARY_LOAD_ADDR));
+
+    ax_println!("paddr: PA:{:#x}", paddr);
+
+    // Zero out the page first
+    unsafe {
+        core::ptr::write_bytes(
+            phys_to_virt(paddr).as_mut_ptr(),
+            0,
+            aligned_size,
+        );
+    }
+    
+    // Copy file data
+    unsafe {
+        core::ptr::copy_nonoverlapping(
+            data.as_ptr(),
+            phys_to_virt(paddr).as_mut_ptr(),
+            file_size,
+        );
+    }
+
+    Ok(BINARY_LOAD_ADDR)
 }
 
 fn load_elf_phdrs(file: &mut File) -> io::Result<(Vec<ProgramHeader>, usize, usize, usize)> {
