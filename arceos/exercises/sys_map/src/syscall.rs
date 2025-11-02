@@ -24,6 +24,7 @@ const SYS_SET_TID_ADDRESS: usize = 96;
 const SYS_MMAP: usize = 222;
 
 const AT_FDCWD: i32 = -100;
+const USER_STACK_SIZE: usize = 0x10000; // 64 KB, same as in main.rs
 
 /// Macro to generate syscall body
 ///
@@ -161,7 +162,9 @@ fn sys_mmap(
             VirtAddr::from(addr as usize).align_down_4k()
         } else {
             // Find a suitable virtual address below stack
-            aspace.end() - aligned_length
+            // Stack is at [aspace.end() - USER_STACK_SIZE, aspace.end())
+            // So we place mmap at aspace.end() - USER_STACK_SIZE - aligned_length
+            (aspace.end() - USER_STACK_SIZE - aligned_length).align_down_4k()
         };
         
         // Map the memory
