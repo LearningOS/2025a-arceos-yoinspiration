@@ -1,0 +1,259 @@
+    Finished `release` profile [optimized] target(s) in 0.04s
+输入了 32+0 块记录
+输出了 32+0 块记录
+33554432 字节 (34 MB, 32 MiB) 已复制，0.0215979 s，1.6 GB/s
+输入了 0+1 块记录
+输出了 0+1 块记录
+12 字节已复制，3.2011e-05 s，375 kB/s
+输入了 0+1 块记录
+输出了 14+0 块记录
+14 字节已复制，5.25e-05 s，267 kB/s
+    [92;1mCreating[0m FAT32 disk image "disk.img" ...
+输入了 64+0 块记录
+输出了 64+0 块记录
+67108864 字节 (67 MB, 64 MiB) 已复制，0.0425517 s，1.6 GB/s
+mkfs.fat 4.2 (2021-01-31)
+    Finished `release` profile [optimized] target(s) in 0.04s
+make[1]: 进入目录“/home/admin/open-camp-os/2025a-arceos-yoinspiration/arceos/payload”
+make -C origin
+make[2]: 进入目录“/home/admin/open-camp-os/2025a-arceos-yoinspiration/arceos/payload/origin”
+make[2]: 对“all”无需做任何事。
+make[2]: 离开目录“/home/admin/open-camp-os/2025a-arceos-yoinspiration/arceos/payload/origin”
+make -C hello_c
+make[2]: 进入目录“/home/admin/open-camp-os/2025a-arceos-yoinspiration/arceos/payload/hello_c”
+make[2]: 对“all”无需做任何事。
+make[2]: 离开目录“/home/admin/open-camp-os/2025a-arceos-yoinspiration/arceos/payload/hello_c”
+make -C fileops_c
+make[2]: 进入目录“/home/admin/open-camp-os/2025a-arceos-yoinspiration/arceos/payload/fileops_c”
+make[2]: 对“all”无需做任何事。
+make[2]: 离开目录“/home/admin/open-camp-os/2025a-arceos-yoinspiration/arceos/payload/fileops_c”
+make -C mapfile_c
+make[2]: 进入目录“/home/admin/open-camp-os/2025a-arceos-yoinspiration/arceos/payload/mapfile_c”
+make[2]: 对“all”无需做任何事。
+make[2]: 离开目录“/home/admin/open-camp-os/2025a-arceos-yoinspiration/arceos/payload/mapfile_c”
+make -C skernel
+make[2]: 进入目录“/home/admin/open-camp-os/2025a-arceos-yoinspiration/arceos/payload/skernel”
+make[2]: 对“all”无需做任何事。
+make[2]: 离开目录“/home/admin/open-camp-os/2025a-arceos-yoinspiration/arceos/payload/skernel”
+make -C skernel2
+make[2]: 进入目录“/home/admin/open-camp-os/2025a-arceos-yoinspiration/arceos/payload/skernel2”
+     Removed 8 files, 20.9KiB total
+   Compiling skernel2 v0.1.0 (/home/admin/open-camp-os/2025a-arceos-yoinspiration/arceos/payload/skernel2)
+    Finished `release` profile [optimized] target(s) in 0.12s
+make[2]: 离开目录“/home/admin/open-camp-os/2025a-arceos-yoinspiration/arceos/payload/skernel2”
+make[1]: 离开目录“/home/admin/open-camp-os/2025a-arceos-yoinspiration/arceos/payload”
+Write file 'payload/skernel2/skernel2' into disk.img
+    [92;1mBuilding[0m App: simple_hv, Arch: riscv64, Platform: riscv64-qemu-virt, App type: rust
+[37mcargo -C exercises/simple_hv/ build[0m [90m-Z unstable-options --target riscv64gc-unknown-none-elf --target-dir /home/admin/open-camp-os/2025a-arceos-yoinspiration/arceos/target --release  --features "axstd/log-level-warn"[0m
+warning: unexpected `cfg` condition value: `std`
+   --> modules/elf/src/lib.rs:128:17
+    |
+128 | #![cfg_attr(not(feature = "std"), no_std)]
+    |                 ^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `std` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+    = note: `#[warn(unexpected_cfgs)]` on by default
+
+warning: unexpected `cfg` condition value: `std`
+   --> modules/elf/src/lib.rs:129:42
+    |
+129 | #![cfg_attr(all(feature = "nightly", not(feature = "std")), feature(error_in_core))]
+    |                                          ^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `std` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `to_str`
+   --> modules/elf/src/lib.rs:148:7
+    |
+148 | #[cfg(feature = "to_str")]
+    |       ^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `to_str` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+   --> modules/elf/src/lib.rs:158:7
+    |
+158 | #[cfg(feature = "std")]
+    |       ^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `std` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+   --> modules/elf/src/lib.rs:160:7
+    |
+160 | #[cfg(feature = "std")]
+    |       ^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `std` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+  --> modules/elf/src/parse.rs:62:7
+   |
+62 | #[cfg(feature = "std")]
+   |       ^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `nightly`
+   = help: consider adding `std` as a feature in `Cargo.toml`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+  --> modules/elf/src/parse.rs:86:36
+   |
+86 | #[cfg(all(feature = "nightly", not(feature = "std")))]
+   |                                    ^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `nightly`
+   = help: consider adding `std` as a feature in `Cargo.toml`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+   --> modules/elf/src/parse.rs:193:7
+    |
+193 | #[cfg(feature = "std")]
+    |       ^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `std` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+  --> modules/elf/src/parse.rs:56:11
+   |
+56 |     #[cfg(feature = "std")]
+   |           ^^^^^^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `nightly`
+   = help: consider adding `std` as a feature in `Cargo.toml`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `std`
+   --> modules/elf/src/parse.rs:169:19
+    |
+169 |             #[cfg(feature = "std")]
+    |                   ^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `nightly`
+    = help: consider adding `std` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: `elf` (lib) generated 10 warnings
+warning: the feature `asm_const` has been stable since 1.83.0-nightly and no longer requires an attribute to enable
+  --> modules/axhal/src/lib.rs:28:12
+   |
+28 | #![feature(asm_const)]
+   |            ^^^^^^^^^
+   |
+   = note: `#[warn(stable_features)]` on by default
+
+warning: `axhal` (lib) generated 1 warning
+warning: the feature `asm_const` has been stable since 1.83.0-nightly and no longer requires an attribute to enable
+ --> exercises/simple_hv/src/main.rs:3:12
+  |
+3 | #![feature(asm_const)]
+  |            ^^^^^^^^^
+  |
+  = note: `#[warn(stable_features)]` on by default
+
+warning: `simple_hv` (bin "simple_hv") generated 1 warning
+    Finished `release` profile [optimized] target(s) in 0.07s
+[37mrust-objcopy --binary-architecture=riscv64[0m [90mexercises/simple_hv//simple_hv_riscv64-qemu-virt.elf --strip-all -O binary exercises/simple_hv//simple_hv_riscv64-qemu-virt.bin[0m
+    [96;1mRunning[0m on qemu...
+[37mqemu-system-riscv64[0m [90m-m 128M -smp 1 -machine virt -bios default -kernel exercises/simple_hv//simple_hv_riscv64-qemu-virt.bin -drive if=pflash,file=/home/admin/open-camp-os/2025a-arceos-yoinspiration/arceos/pflash.img,format=raw,unit=1 -device virtio-blk-pci,drive=disk0 -drive id=disk0,if=none,format=raw,file=disk.img -nographic -D qemu.log -d in_asm,int,mmu,pcall,cpu_reset,guest_errors[0m
+
+OpenSBI v1.3
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|___ /_____|
+        | |
+        |_|
+
+Platform Name             : riscv-virtio,qemu
+Platform Features         : medeleg
+Platform HART Count       : 1
+Platform IPI Device       : aclint-mswi
+Platform Timer Device     : aclint-mtimer @ 10000000Hz
+Platform Console Device   : uart8250
+Platform HSM Device       : ---
+Platform PMU Device       : ---
+Platform Reboot Device    : sifive_test
+Platform Shutdown Device  : sifive_test
+Platform Suspend Device   : ---
+Platform CPPC Device      : ---
+Firmware Base             : 0x80000000
+Firmware Size             : 194 KB
+Firmware RW Offset        : 0x20000
+Firmware RW Size          : 66 KB
+Firmware Heap Offset      : 0x28000
+Firmware Heap Size        : 34 KB (total), 2 KB (reserved), 9 KB (used), 22 KB (free)
+Firmware Scratch Size     : 4096 B (total), 760 B (used), 3336 B (free)
+Runtime SBI Version       : 1.0
+
+Domain0 Name              : root
+Domain0 Boot HART         : 0
+Domain0 HARTs             : 0*
+Domain0 Region00          : 0x0000000002000000-0x000000000200ffff M: (I,R,W) S/U: ()
+Domain0 Region01          : 0x0000000080000000-0x000000008001ffff M: (R,X) S/U: ()
+Domain0 Region02          : 0x0000000080020000-0x000000008003ffff M: (R,W) S/U: ()
+Domain0 Region03          : 0x0000000000000000-0xffffffffffffffff M: (R,W,X) S/U: (R,W,X)
+Domain0 Next Address      : 0x0000000080200000
+Domain0 Next Arg1         : 0x0000000087e00000
+Domain0 Next Mode         : S-mode
+Domain0 SysReset          : yes
+Domain0 SysSuspend        : yes
+
+Boot HART ID              : 0
+Boot HART Domain          : root
+Boot HART Priv Version    : v1.12
+Boot HART Base ISA        : rv64imafdch
+Boot HART ISA Extensions  : time,sstc
+Boot HART PMP Count       : 16
+Boot HART PMP Granularity : 4
+Boot HART PMP Address Bits: 54
+Boot HART MHPM Count      : 16
+Boot HART MIDELEG         : 0x0000000000001666
+Boot HART MEDELEG         : 0x0000000000f0b509
+
+       d8888                            .d88888b.   .d8888b.
+      d88888                           d88P" "Y88b d88P  Y88b
+     d88P888                           888     888 Y88b.
+    d88P 888 888d888  .d8888b  .d88b.  888     888  "Y888b.
+   d88P  888 888P"   d88P"    d8P  Y8b 888     888     "Y88b.
+  d88P   888 888     888      88888888 888     888       "888
+ d8888888888 888     Y88b.    Y8b.     Y88b. .d88P Y88b  d88P
+d88P     888 888      "Y8888P  "Y8888   "Y88888P"   "Y8888P"
+
+arch = riscv64
+platform = riscv64-qemu-virt
+target = riscv64gc-unknown-none-elf
+smp = 1
+build_mode = release
+log_level = warn
+
+[37m[  0.609128 0 fatfs::dir:139] [31mIs a directory[m
+[m[37m[  0.627515 0 fatfs::dir:139] [31mIs a directory[m
+[m[37m[  0.648164 0 fatfs::dir:139] [31mIs a directory[m
+[m[37m[  0.669164 0 fatfs::dir:139] [31mIs a directory[m
+[mHypervisor ...
+app: /sbin/skernel2, binary format
+app: /sbin/skernel2, size: 4096 bytes
+First 4 bytes: 0xf3 0x25 0x40 0xf1
+Verify read back first 4 bytes: 0xf3 0x25 0x40 0xf1
+Entry 0x80200000 mapped to GPA PA:0x80647000, flags: READ | WRITE | EXECUTE | USER, level: Size4K
+VSATP set to: 0x8000000000080646, page_table_root: PA:PA:0x80646000
+InstructionGuestPageFault: GVA=0x80200000 sepc=0x80200000
+[37m[  0.692303 0:2 axruntime::lang_items:5] [31mpanicked at exercises/simple_hv/src/main.rs:141:13:
+InstructionGuestPageFault: GVA=0x80200000 sepc=0x80200000 - Page table may not have correct mapping[m
+[msimple_hv default

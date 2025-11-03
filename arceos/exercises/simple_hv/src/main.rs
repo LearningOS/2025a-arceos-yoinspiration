@@ -42,11 +42,56 @@ fn main() {
 
     // Setup context to prepare to enter guest mode.
     let mut ctx = VmCpuRegisters::default();
-    prepare_guest_context(&mut ctx, entry);
+    let guest_page_table_root = uspace.page_table_root();
+    
+    // Debug: Verify entry address has mapping in page table
+    let gpa = match uspace.page_table().query(entry.into()) {
+        Ok((paddr, flags, level)) => {
+            ax_println!("Entry {:#x} mapped to GPA {:#x}, flags: {:?}, level: {:?}", 
+                       entry, paddr, flags, level);
+            paddr
+        },
+        Err(e) => {
+            ax_println!("WARNING: Entry {:#x} not found in page table: {:?}", entry, e);
+            panic!("Cannot find entry address in page table");
+        }
+    };
+    
+    // For HGATP to work, we need GPA -> HPA mapping in the page table.
+    // In simple implementation, we assume GPA = HPA (identity mapping).
+    // Add identity mapping for GPA -> HPA in the same page table.
+    // This is needed because HGATP uses the page table to translate GPA to HPA.
+    use axhal::paging::MappingFlags;
+    use axhal::mem::{PAGE_SIZE_4K, VirtAddr};
+    
+    // Calculate the size of the loaded binary and create identity mapping
+    let aligned_size = (4096 + PAGE_SIZE_4K - 1) & !(PAGE_SIZE_4K - 1); // 4096 is the binary size
+    let gpa_vaddr = VirtAddr::from(gpa.as_usize());
+    ax_println!("Adding identity mapping for GPA {:#x} -> HPA {:#x}, size: {:#x}", 
+                gpa, gpa, aligned_size);
+    uspace.map_linear(gpa_vaddr, gpa, aligned_size, 
+                      MappingFlags::READ|MappingFlags::WRITE|MappingFlags::EXECUTE|MappingFlags::USER)
+        .unwrap_or_else(|e| panic!("Failed to add identity mapping for GPA {:#x}: {:?}", gpa, e));
+    
+    // Verify the identity mapping was created correctly
+    match uspace.page_table().query(gpa_vaddr) {
+        Ok((hpa, flags, level)) => {
+            ax_println!("Identity mapping verified: GPA {:#x} -> HPA {:#x}, flags: {:?}", 
+                       gpa, hpa, flags);
+            if hpa != gpa {
+                panic!("Identity mapping mismatch: GPA {:#x} -> HPA {:#x}", gpa, hpa);
+            }
+        },
+        Err(e) => {
+            panic!("Failed to verify identity mapping for GPA {:#x}: {:?}", gpa, e);
+        }
+    }
+    
+    prepare_guest_context(&mut ctx, entry, guest_page_table_root);
 
-    // Setup pagetable for 2nd address mapping.
-    let ept_root = uspace.page_table_root();
-    prepare_vm_pgtable(ept_root);
+    // Setup pagetable for 2nd address mapping (HGATP for guest physical to host physical).
+    // In simple implementation, we use the same page table with identity mapping (GPA = HPA).
+    prepare_vm_pgtable(guest_page_table_root);
 
     // Kick off vm and wait for it to exit.
     while !run_guest(&mut ctx) {
@@ -123,6 +168,14 @@ fn vmexit_handler(ctx: &mut VmCpuRegisters) -> bool {
                 ctx.guest_regs.sepc
             );
         },
+        Trap::Exception(Exception::InstructionGuestPageFault) => {
+            let gva = stval::read();
+            ax_println!("InstructionGuestPageFault: GVA={:#x} sepc={:#x}", gva, ctx.guest_regs.sepc);
+            panic!("InstructionGuestPageFault: GVA={:#x} sepc={:#x} - Page table may not have correct mapping",
+                gva,
+                ctx.guest_regs.sepc
+            );
+        },
         Trap::Exception(Exception::LoadGuestPageFault) => {
             panic!("LoadGuestPageFault: stval{:#x} sepc: {:#x}",
                 stval::read(),
@@ -141,7 +194,7 @@ fn vmexit_handler(ctx: &mut VmCpuRegisters) -> bool {
     false
 }
 
-fn prepare_guest_context(ctx: &mut VmCpuRegisters, entry: usize) {
+fn prepare_guest_context(ctx: &mut VmCpuRegisters, entry: usize, guest_page_table_root: PhysAddr) {
     // Set hstatus
     let mut hstatus = LocalRegisterCopy::<usize, hstatus::Register>::new(
         riscv::register::hstatus::read().bits(),
@@ -159,4 +212,16 @@ fn prepare_guest_context(ctx: &mut VmCpuRegisters, entry: usize) {
     ctx.guest_regs.sstatus = sstatus.bits();
     // Return to entry to start vm.
     ctx.guest_regs.sepc = entry;
+    
+    // Set guest VSATP (Virtual Supervisor Address Translation and Protection)
+    // This maps guest virtual addresses to guest physical addresses.
+    // For simple binary loading, we use the same page table root.
+    // VSATP format: MODE (bits 63-60) | PPN (bits 43-0)
+    // MODE=8 for Sv39, MODE=9 for Sv48
+    // Note: VSATP PPN is in host physical address, not guest physical address
+    let vsatp = 8usize << 60 | usize::from(guest_page_table_root) >> 12;
+    ctx.vs_csrs.vsatp = vsatp;
+    ax_println!("VSATP set to: {:#x}, page_table_root: PA:{:#x}", vsatp, guest_page_table_root);
+    
+    // Debug: VSATP setup complete
 }

@@ -39,7 +39,7 @@ pub struct GuestVsCsrs {
     vsepc: usize,
     vscause: usize,
     vstval: usize,
-    vsatp: usize,
+    pub vsatp: usize,
     vstimecmp: usize,
 }
 
@@ -76,7 +76,7 @@ pub struct VmCpuRegisters {
 
     // CPU state that only applies when V=1, e.g. the VS-level CSRs. Saved/restored on activation of
     // the vCPU.
-    vs_csrs: GuestVsCsrs,
+    pub vs_csrs: GuestVsCsrs,
 
     // Virtualized HS-level CPU state.
     virtual_hs_csrs: GuestVirtualHsCsrs,
@@ -110,6 +110,13 @@ macro_rules! hyp_csr_offset {
 macro_rules! guest_csr_offset {
     ($reg:tt) => {
         offset_of!(VmCpuRegisters, guest_regs) + offset_of!(GuestCpuState, $reg)
+    };
+}
+
+#[allow(unused_macros)]
+macro_rules! vs_csr_offset {
+    ($reg:tt) => {
+        offset_of!(VmCpuRegisters, vs_csrs) + offset_of!(GuestVsCsrs, $reg)
     };
 }
 
@@ -178,6 +185,8 @@ global_asm!(
     guest_hstatus = const guest_csr_offset!(hstatus),
     guest_scounteren = const guest_csr_offset!(scounteren),
     guest_sepc = const guest_csr_offset!(sepc),
+    
+    guest_vsatp = const vs_csr_offset!(vsatp),
 
 );
 

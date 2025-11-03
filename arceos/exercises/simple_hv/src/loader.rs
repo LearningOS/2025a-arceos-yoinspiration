@@ -5,7 +5,7 @@ use std::fs::File;
 use alloc::vec::Vec;
 use alloc::vec;
 use axhal::paging::MappingFlags;
-use axhal::mem::{PAGE_SIZE_4K, VirtAddr, MemoryAddr, phys_to_virt};
+use axhal::mem::{PAGE_SIZE_4K, VirtAddr, MemoryAddr};
 use axmm::AddrSpace;
 
 use elf::abi::{PT_INTERP, PT_LOAD};
@@ -77,36 +77,26 @@ fn load_binary_file(file: &mut File, uspace: &mut AddrSpace, fname: &str) -> io:
     
     let file_size = data.len();
     ax_println!("app: {}, size: {} bytes", fname, file_size);
+    
+    // Debug: Print first few bytes
+    if file_size >= 4 {
+        ax_println!("First 4 bytes: {:#02x} {:#02x} {:#02x} {:#02x}", 
+                    data[0], data[1], data[2], data[3]);
+    }
 
     // Align size to page boundary
     let aligned_size = (file_size + PAGE_SIZE_4K - 1) & !(PAGE_SIZE_4K - 1);
     
     uspace.map_alloc(BINARY_LOAD_ADDR.into(), aligned_size, MappingFlags::READ|MappingFlags::WRITE|MappingFlags::EXECUTE|MappingFlags::USER, true)?;
 
-    let (paddr, _, _) = uspace
-        .page_table()
-        .query(BINARY_LOAD_ADDR.into())
-        .unwrap_or_else(|_| panic!("Mapping failed for segment: {:#x}", BINARY_LOAD_ADDR));
-
-    ax_println!("paddr: PA:{:#x}", paddr);
-
-    // Zero out the page first
-    unsafe {
-        core::ptr::write_bytes(
-            phys_to_virt(paddr).as_mut_ptr(),
-            0,
-            aligned_size,
-        );
-    }
+    // Write file data using virtual address (consistent with ELF loading)
+    uspace.write(BINARY_LOAD_ADDR.into(), &data)?;
     
-    // Copy file data
-    unsafe {
-        core::ptr::copy_nonoverlapping(
-            data.as_ptr(),
-            phys_to_virt(paddr).as_mut_ptr(),
-            file_size,
-        );
-    }
+    // Debug: Verify the write by reading back
+    let mut verify_buf = vec![0u8; 4.min(file_size)];
+    uspace.read(BINARY_LOAD_ADDR.into(), &mut verify_buf)?;
+    ax_println!("Verify read back first 4 bytes: {:#02x} {:#02x} {:#02x} {:#02x}",
+                verify_buf[0], verify_buf[1], verify_buf[2], verify_buf[3]);
 
     Ok(BINARY_LOAD_ADDR)
 }

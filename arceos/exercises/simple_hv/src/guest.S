@@ -34,6 +34,12 @@ _run_guest:
     csrrw t1, sstatus, t1
     sd    t1, ({hyp_sstatus})(a0)
 
+    /* Load VSATP before setting hstatus, so address translation is ready */
+    ld    t1, ({guest_vsatp})(a0)
+    csrw  vsatp, t1
+    /* Flush TLB after setting VSATP */
+    sfence.vma
+
     ld    t1, ({guest_hstatus})(a0)
     csrrw t1, hstatus, t1
 
