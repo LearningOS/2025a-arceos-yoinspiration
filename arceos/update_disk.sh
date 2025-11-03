@@ -19,9 +19,11 @@ fi
 
 printf "Write file '$FILE' into disk.img\n"
 
-if [ "$(uname)" = "Darwin" ] && command -v mcopy >/dev/null 2>&1; then
+# First try mcopy (no sudo needed)
+if command -v mcopy >/dev/null 2>&1; then
     mcopy -i disk.img "$FILE" ::/sbin/
 else
+    # Fallback to mount (requires sudo)
     mkdir -p ./mnt
     sudo mount ./disk.img ./mnt
     sudo mkdir -p ./mnt/sbin

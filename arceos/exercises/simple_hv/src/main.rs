@@ -17,7 +17,7 @@ mod sbi;
 mod loader;
 
 use vcpu::VmCpuRegisters;
-use riscv::register::{scause, sstatus, stval, mhartid};
+use riscv::register::{scause, sstatus, stval, mhartid, htinst};
 use csrs::defs::hstatus;
 use tock_registers::LocalRegisterCopy;
 use csrs::{RiscvCsrTrait, CSR};
@@ -101,7 +101,8 @@ fn vmexit_handler(ctx: &mut VmCpuRegisters) -> bool {
             }
         },
         Trap::Exception(Exception::IllegalInstruction) => {
-            let inst = stval::read();
+            // In RISC-V virtualization, the instruction encoding is in htinst, not stval
+            let inst = htinst::read();
             ax_println!("Illegal instruction: {:#x} at sepc: {:#x}", inst, ctx.guest_regs.sepc);
             
             // Check if it's csrr a1, mhartid (0xf14025f3)

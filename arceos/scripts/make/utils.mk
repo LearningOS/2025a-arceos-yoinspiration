@@ -42,24 +42,21 @@ endef
 
 define setup_disk
   $(call build_origin)
-  @mkdir -p ./mnt
-  @if [ "$$(uname)" = "Darwin" ]; then \
-    if command -v mcopy >/dev/null 2>&1; then \
-      mmd -i $(1) ::/sbin; \
-      mcopy -i $(1) /tmp/origin.bin ::/sbin/; \
-    else \
-      sudo mount -t msdos $(1) ./mnt; \
-      sudo mkdir -p ./mnt/sbin; \
-      sudo cp /tmp/origin.bin ./mnt/sbin; \
-      sudo umount ./mnt; \
-    fi \
+  @if command -v mcopy >/dev/null 2>&1; then \
+    mmd -i $(1) ::/sbin; \
+    mcopy -i $(1) /tmp/origin.bin ::/sbin/; \
   else \
-    sudo mount $(1) ./mnt; \
+    mkdir -p ./mnt; \
+    if [ "$$(uname)" = "Darwin" ]; then \
+      sudo mount -t msdos $(1) ./mnt; \
+    else \
+      sudo mount $(1) ./mnt; \
+    fi; \
     sudo mkdir -p ./mnt/sbin; \
     sudo cp /tmp/origin.bin ./mnt/sbin; \
     sudo umount ./mnt; \
+    rm -rf mnt; \
   fi
-  @rm -rf mnt
 endef
 
 define build_origin
